@@ -7,7 +7,7 @@
 //
 
 #import "AlbumListCell.h"
-
+#import "UIImage+Extension.h"
 @implementation AlbumListCell
 
 - (void)awakeFromNib {
@@ -21,6 +21,10 @@
     // Configure the view for the selected state
 }
 
+-(UIImageView *)coverIV{
+    _coverIV.layer.cornerRadius = 22.5;
+    return _coverIV;
+}
 
 
 

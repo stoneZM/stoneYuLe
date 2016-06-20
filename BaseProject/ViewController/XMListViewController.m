@@ -12,12 +12,16 @@
 #import "XMAlbumVIewControllerViewController.h"
 #import "XMAlbumDetailViewController.h"
 #import "TopAlbumController.h"
-@interface XMListViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "iCarousel.h"
+@interface XMListViewController ()<UITableViewDelegate,UITableViewDataSource,iCarouselDelegate,iCarouselDataSource>
 @property (nonatomic,strong)XMListViewModel* XMvm;
 @property (nonatomic,strong)UITableView* tableView;
 @property (nonatomic,strong)UILabel* moreLb;
 @property (nonatomic,strong)UIBarButtonItem* item;
 @property (nonatomic,strong)WMPageController* wmVC;
+@property (nonatomic,strong)iCarousel* ic;
+@property (nonatomic,strong)NSTimer* timer;
+@property (nonatomic,strong)UIPageControl* pageControl;
 
 @end
 
@@ -40,6 +44,7 @@
             if (error) {
                 self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_bg_noData_7"]];
             }
+            self.tableView.tableHeaderView = [self headerView];
             [self.tableView reloadData];
             [self.tableView.header endRefreshing];
         }];
@@ -206,6 +211,89 @@
     return headerButton;
 }
 
+
+#pragma mark 添加头部滚动视图
+-(iCarousel *)ic{
+    if (_ic == nil) {
+        _ic = [iCarousel new];
+        _ic.pagingEnabled = YES;
+        _ic.delegate = self;
+        _ic.dataSource = self;
+    }
+    return _ic;
+}
+-(UIPageControl *)pageControl{
+    if (_pageControl == nil) {
+        _pageControl = [UIPageControl new];
+        _pageControl.enabled = NO;
+        _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+        _pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    }
+    return _pageControl;
+}
+
+/** 头部视图 */
+-(UIView*)headerView{
+    //刷新的时候，先把原来的定时器销毁
+    [self.timer invalidate];
+    self.timer = nil;
+    self.ic.currentItemIndex = 0;
+    self.pageControl.numberOfPages = self.XMvm.focusImages.count;
+    //头部视图，origin无效，宽度无效
+    UIView* headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, kWindowW/750*400)];
+    //添加滚动栏
+    [headerView addSubview:self.ic];
+    [headerView addSubview:self.pageControl];
+    [self.ic mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(0);
+    }];
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kWindowW);
+        make.height.mas_equalTo(5);
+        make.bottom.mas_equalTo(-3);
+    }];
+    //开一个定时器，让头部视图自动滚动
+   self.timer = [NSTimer bk_scheduledTimerWithTimeInterval:4 block:^(NSTimer *timer) {
+        [self.ic scrollToItemAtIndex:self.ic.currentItemIndex+1 animated:YES];
+    } repeats:YES];
+
+    return headerView;
+}
+#pragma mark -  iCarouselDelegate,iCarouselDataSource
+-(NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return self.XMvm.focusImages.count;
+}
+-(UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    if (view == nil) {
+        view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, kWindowW/750*400)];
+        UIImageView* imageView = [UIImageView new];
+        imageView.tag = 100;
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        view.clipsToBounds = YES;
+        [view addSubview:imageView];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+    }
+    UIImageView* imageView = [view viewWithTag:100];
+    [imageView sd_setImageWithURL:[self.XMvm urlForSrcollForindex:index] placeholderImage:[UIImage imageNamed:@"cell_bg_noData_7"]];
+     return view;
+}
+/** 允许循环滚动*/
+-(CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    if (option == iCarouselOptionWrap) {
+        return YES;
+    }
+    return value;
+}
+/**监控当前滚动到第几个*/
+-(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel
+{
+    self.pageControl.currentPage = carousel.currentItemIndex;
+}
 
 
 #pragma mark 

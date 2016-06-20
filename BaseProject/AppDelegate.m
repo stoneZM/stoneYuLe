@@ -37,8 +37,8 @@
 //    [XMCatageoryNetworking getTopAlbumWithkey:@"2_3_ranking:album:played:1:3" pageID:1 statEven:@"有声书每日TOP50" statPage:@"有声书" complatetionHandle:^(id responseObj, NSError *error) {
 //
 //    }];
-    NSString* str = [@"http://mobile.ximalaya.com/mobile/v1/album?albumId=2941387&device=iPhone&pageSize=20&source=0&statEvent=pageview%2Falbum%402941387&statModule=%E6%9C%89%E5%A3%B0%E4%B9%A6%E6%AF%8F%E6%97%A5TOP50&statPage=ranklist%40%E6%9C%89%E5%A3%B0%E4%B9%A6%E6%AF%8F%E6%97%A5TOP50&statPosition=1" stringByRemovingPercentEncoding];
-    NSLog(@"%@",str);
+//    NSString* str = [@"http://mobile.ximalaya.com/mobile/v1/album?albumId=2941387&device=iPhone&pageSize=20&source=0&statEvent=pageview%2Falbum%402941387&statModule=%E6%9C%89%E5%A3%B0%E4%B9%A6%E6%AF%8F%E6%97%A5TOP50&statPage=ranklist%40%E6%9C%89%E5%A3%B0%E4%B9%A6%E6%AF%8F%E6%97%A5TOP50&statPosition=1" stringByRemovingPercentEncoding];
+//    NSLog(@"%@",str);
 
     return YES;
 }

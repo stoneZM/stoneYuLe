@@ -57,6 +57,15 @@
     NSString* title = [self modelInSection:section inRow:row].title;
     return  title;
 }
+/***获取滚动视图的URL**/
+-(NSURL*)urlForSrcollForindex:(NSInteger)index{
+    NSString* path = [self modelForIndex:index].pic;
+    return [NSURL URLWithString:path];
+}
+-(XMListFocusImagesListModel*)modelForIndex:(NSInteger)index{
+    XMListFocusImagesListModel* model = self.focusImages[index];
+    return model;
+}
 /**图片的url*/
 -(NSURL*)UrlForSection:(NSInteger)section forRow:(NSInteger)row{
     NSString* path = nil;

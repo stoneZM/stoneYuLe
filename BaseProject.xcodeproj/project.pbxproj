@@ -52,6 +52,8 @@
 		8E91DB011D15A29300F85C51 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E91DB001D15A29300F85C51 /* AVFoundation.framework */; };
 		8E91DB031D15A29F00F85C51 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E91DB021D15A29F00F85C51 /* AVKit.framework */; };
 		8E99F7161D17BC5B00BE0D7D /* Top50Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E99F7151D17BC5B00BE0D7D /* Top50Cell.xib */; };
+		8ED498461D17EBD400052633 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED498451D17EBD400052633 /* iCarousel.m */; };
+		8ED498491D17FCD500052633 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED498481D17FCD500052633 /* UIImage+Extension.m */; };
 		8ED7E8B31D16D9C30060743C /* XMTopAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8B21D16D9C30060743C /* XMTopAlbumModel.m */; };
 		8ED7E8B61D16E1C50060743C /* XMTopAlbumViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8B51D16E1C50060743C /* XMTopAlbumViewModel.m */; };
 		8ED7E8B91D16E9C60060743C /* TopAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8B81D16E9C60060743C /* TopAlbumController.m */; };
@@ -146,6 +148,10 @@
 		8E91DB001D15A29300F85C51 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8E91DB021D15A29F00F85C51 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		8E99F7151D17BC5B00BE0D7D /* Top50Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Top50Cell.xib; sourceTree = "<group>"; };
+		8ED498441D17EBD400052633 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		8ED498451D17EBD400052633 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		8ED498471D17FCD500052633 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extension.h"; path = "../Resource/UIImage+Extension.h"; sourceTree = "<group>"; };
+		8ED498481D17FCD500052633 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Extension.m"; path = "../Resource/UIImage+Extension.m"; sourceTree = "<group>"; };
 		8ED7E8B11D16D9C30060743C /* XMTopAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTopAlbumModel.h; sourceTree = "<group>"; };
 		8ED7E8B21D16D9C30060743C /* XMTopAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMTopAlbumModel.m; sourceTree = "<group>"; };
 		8ED7E8B41D16E1C50060743C /* XMTopAlbumViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTopAlbumViewModel.h; sourceTree = "<group>"; };
@@ -284,8 +290,11 @@
 		3886C0B41BD74A4A0014E661 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8ED498431D17EBD400052633 /* iCarousel */,
 				8E15AFC91D15089600CF976B /* ZmImageView.h */,
 				8E15AFCA1D15089600CF976B /* ZmImageView.m */,
+				8ED498471D17FCD500052633 /* UIImage+Extension.h */,
+				8ED498481D17FCD500052633 /* UIImage+Extension.m */,
 				8E2FAC9A1D13758A003B313B /* WMMenuView */,
 				8E2FACA51D13758A003B313B /* WMPageConst.h */,
 				8E2FACA61D13758A003B313B /* WMPageController.h */,
@@ -420,6 +429,15 @@
 				8E2FACA41D13758A003B313B /* WMScrollView.m */,
 			);
 			path = WMMenuView;
+			sourceTree = "<group>";
+		};
+		8ED498431D17EBD400052633 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				8ED498441D17EBD400052633 /* iCarousel.h */,
+				8ED498451D17EBD400052633 /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		DEB62B47C560AA65E07ECFA4 /* Pods */ = {
@@ -588,8 +606,10 @@
 				8E2FACAD1D13758A003B313B /* WMPageController.m in Sources */,
 				8E91DAFF1D15A15C00F85C51 /* AlbumPlayController.m in Sources */,
 				8E2FAC991D136C5A003B313B /* XMListViewModel.m in Sources */,
+				8ED498461D17EBD400052633 /* iCarousel.m in Sources */,
 				8E2FACAC1D13758A003B313B /* WMScrollView.m in Sources */,
 				8E15AFC81D15072F00CF976B /* AlbumDetailView.m in Sources */,
+				8ED498491D17FCD500052633 /* UIImage+Extension.m in Sources */,
 				8E5872311D123371008F0F00 /* XMCategoryCell.m in Sources */,
 				8ED7E8B31D16D9C30060743C /* XMTopAlbumModel.m in Sources */,
 				3804CE511BD758F10046C8C8 /* AppDelegate+Category.m in Sources */,

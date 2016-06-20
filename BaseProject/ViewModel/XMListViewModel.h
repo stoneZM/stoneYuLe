@@ -16,6 +16,7 @@
 @property (nonatomic,strong)NSString* staEvent;
 @property (nonatomic,strong)NSString* staModule;
 
+
 /**分区数*/
 @property (nonatomic,assign)NSInteger sectionNum;
 /**每个分区的行数*/
@@ -29,6 +30,9 @@
 /**获取分组**/
 @property (nonatomic,strong)NSMutableArray* categoryContents;
 
+
+/***获取滚动视图的URL**/
+-(NSURL*)urlForSrcollForindex:(NSInteger)index;
 
 /** 特定分区的特定单元格的标题*/
 -(NSString*)titleForSection:(NSInteger)section ForRow:(NSInteger)row;
@@ -45,7 +49,6 @@
 -(NSString*)headerTitleForSection:(NSInteger)section;
 /**获取ablumID*/
 -(NSString*)albumIDForSection:(NSInteger)section ForRow:(NSInteger)row;
-//获取关键词
 
 
 /**给top50传入所需的key*/
