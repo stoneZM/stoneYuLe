@@ -9,9 +9,13 @@
 #import "XMAlbumDetailViewController.h"
 #import "AlbumListCell.h"
 #import "AlbumPlayController.h"
+#import "AlbumDetailView.h"
+
+
 @interface XMAlbumDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)AMAlbumDatailViewModel* xmVM;
 @property (nonatomic,strong)UITableView* tableView;
+@property (nonatomic,strong)AlbumDetailView* headerView;
 @end
 
 @implementation XMAlbumDetailViewController
@@ -23,6 +27,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.xmVM refreshDataCompletionHandle:^(NSError *error) {
+            self.tableView.tableHeaderView = self.headerView;
             [self.tableView.header endRefreshing];
             [self.tableView reloadData];
         }];
@@ -38,9 +43,25 @@
             [self.tableView reloadData];
         }];
     } ];
-
     [self.tableView.header beginRefreshing];
+    
 }
+
+-(AlbumDetailView *)headerView{
+    if (_headerView == nil) {
+        _headerView = [[AlbumDetailView alloc]initWithFrame:CGRectMake(0, 0, kWindowW, 150)];
+        [_headerView.coverIV.imageView sd_setImageWithURL:[self.xmVM getUrlForHeader] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+        _headerView.titleLb.text = [self.xmVM getTitleForHeader];
+        _headerView.nickLb.text = [self.xmVM getnickNameForHeader];
+        _headerView.playtimesLb.text = [self.xmVM getPlayCountsForHeader];
+        _headerView.stateLb.text = [self.xmVM getUpdateTimeForHeader];
+    }
+    return _headerView;
+}
+
+
+
+
 
 -(instancetype)initWithAlbumID:(NSInteger)albumID position:(NSInteger)position{
     if (self = [super init]) {
@@ -95,7 +116,7 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeadrInSection:(NSInteger)section{
-    return 1;
+    return 5;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     cell.separatorInset = UIEdgeInsetsZero;
@@ -108,6 +129,7 @@
     AlbumPlayController* vc1 = [AlbumPlayController defaultWithPlayUrl:[self.xmVM mp3URLForRow:indexPath.row]];
     [self.navigationController pushViewController:vc1 animated:YES];
 }
+
 
 
 @end

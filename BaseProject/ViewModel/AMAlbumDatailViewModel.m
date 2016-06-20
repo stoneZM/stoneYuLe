@@ -8,7 +8,17 @@
 
 #import "AMAlbumDatailViewModel.h"
 #import "XMTracksModel.h"
+@interface  AMAlbumDatailViewModel()
+@property (nonatomic,strong)XMAlbumDetailAlbumModel* model;
+@end
 @implementation AMAlbumDatailViewModel
+
+-(XMAlbumDetailAlbumModel *)model{
+    if (_model == nil) {
+        _model = [XMAlbumDetailAlbumModel new];
+    }
+    return _model;
+}
 //实现初始化
 -(instancetype)initWithAlbumID:(NSInteger)albumID statPage:(NSString *)statPage position:(NSInteger)position
 {
@@ -85,10 +95,12 @@
     return model;
 }
 
+
 //网络请求，获取数据
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     if (self.pageID == 1) {
     [XMCatageoryNetworking getXMAlbumDetailWithAlbumId:self.albumID statPage:self.statPage statPosition:self.position compltetionHandle:^(XMAlbumDetailModel* model, NSError *error) {
+        self.model = model.data.album;
         [self.dataArr removeAllObjects];
         [self.dataArr addObjectsFromArray:model.data.tracks.list];
         completionHandle(error);
@@ -111,6 +123,31 @@
     }
     self.pageID += 1;
     [self getDataFromNetCompleteHandle:completionHandle];
+}
+
+
+/**获取表头的coverURL***/
+-(NSURL*)getUrlForHeader{
+    NSString* path = self.model.coverSmall;
+    return [NSURL URLWithString:path];
+}
+/**获取题目***/
+-(NSString*)getTitleForHeader{
+    return self.model.title;
+}
+/***获取主播名称**/
+-(NSString*)getnickNameForHeader{
+    return self.model.nickname;
+}
+/***获取播放数***/
+-(NSString*)getPlayCountsForHeader{
+    NSInteger count = self.model.playTimes;
+    return [NSString stringWithFormat:@"%.1lf万",count*1.0/10000];
+}
+/****获取更新时间*****/
+-(NSString*)getUpdateTimeForHeader{
+    NSInteger time = self.model.updatedAt;
+    return [NSString stringWithFormat:@"%ld",time];
 }
 
 

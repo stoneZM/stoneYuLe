@@ -16,13 +16,20 @@
 @property (nonatomic,strong)UILabel* zhuboLb;
 @property (nonatomic,strong)UILabel* bofangLb;
 @property (nonatomic,strong)UILabel* zhuangtaiLb;
-
+@property (nonatomic,strong)UIView* backgroundView;
 @end
 
 @implementation AlbumDetailView
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+}
+-(UIView *)backgroundView{
+    if (_backgroundView == nil) {
+        _backgroundView = [UIView new];
+        _backgroundView.backgroundColor = [UIColor redColor];
+    }
+    return _backgroundView;
 }
 -(UILabel *)zhuboLb{
     if (_zhuboLb == nil) {
@@ -47,7 +54,7 @@
         _zhuangtaiLb = [UILabel new];
        _zhuangtaiLb.font = [UIFont systemFontOfSize:KSubDtailTextFont];
         _zhuangtaiLb.textColor = KTextColor;
-        _zhuangtaiLb.text = @"播放:";
+        _zhuangtaiLb.text = @"状态:";
     }
     return _zhuangtaiLb;
 }
@@ -63,6 +70,7 @@
         _titleLb = [UILabel new];
         _titleLb.font = [UIFont systemFontOfSize:KTitleTextFont];
         _titleLb.textAlignment = NSTextAlignmentLeft;
+        _titleLb.numberOfLines = 2;
     }
     return _titleLb;
 }
@@ -80,10 +88,10 @@
     if (_playtimesLb == nil) {
         _playtimesLb = [UILabel new];
         _playtimesLb.font = [UIFont systemFontOfSize:KSubDtailTextFont];
-        _nickLb.textAlignment = NSTextAlignmentLeft;
-        _nickLb.textColor = KTextColor;
+        _playtimesLb.textAlignment = NSTextAlignmentLeft;
+        _playtimesLb.textColor = KTextColor;
     }
-    return _nickLb;
+    return _playtimesLb;
 }
 
 -(UILabel *)stateLb{
@@ -96,24 +104,31 @@
     return _stateLb;
 }
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.zhuboLb];
         [self addSubview:self.bofangLb];
         [self addSubview:self.zhuangtaiLb];
-        [self addSubview:self.coverIV];
         [self addSubview:self.titleLb];
         [self addSubview:self.nickLb];
         [self addSubview:self.playtimesLb];
         [self addSubview:self.stateLb];
+        [self addSubview:self.backgroundView];
+        [self addSubview:self.coverIV];
+        [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(17);
+            make.size.mas_equalTo(CGSizeMake(106, 106));
+        }];
         [self.coverIV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(10);
-            make.size.mas_equalTo(CGSizeMake(150, 150));
+            make.left.top.mas_equalTo(20);
+            make.size.mas_equalTo(CGSizeMake(100, 100));
+
         }];
         [self.titleLb mas_makeConstraints:^(MASConstraintMaker *make) {
             make.topMargin.mas_equalTo(self.coverIV.mas_topMargin);
-            make.left.mas_equalTo(self.coverIV.mas_right).mas_equalTo(30);
-
+            make.left.mas_equalTo(self.coverIV.mas_right).mas_equalTo(20);
+            make.right.mas_lessThanOrEqualTo(-20);
         }];
         [self.zhuboLb mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLb.mas_bottom).mas_equalTo(15);
@@ -134,7 +149,6 @@
             make.bottomMargin.mas_equalTo(self.bofangLb.mas_bottomMargin);
             make.leftMargin.mas_equalTo(self.nickLb.mas_leftMargin);
         }];
-
         [self.zhuangtaiLb mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leftMargin.mas_equalTo(self.titleLb.mas_leftMargin);
             make.top.mas_equalTo(self.bofangLb.mas_bottom).mas_equalTo(5);
