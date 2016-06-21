@@ -21,15 +21,13 @@
     // Configure the view for the selected state
 }
 
--(UIImageView *)coverIV{
-    _coverIV.layer.cornerRadius = 22.5;
-    return _coverIV;
-}
-
-
-
 - (IBAction)clickToDownLoadSong:(UIButton *)sender {
   //TODO: 下载按钮
 }
+
+
+
+
+
 
 @end

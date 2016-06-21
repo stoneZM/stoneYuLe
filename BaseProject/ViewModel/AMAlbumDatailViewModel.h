@@ -40,7 +40,7 @@
 -(NSString*)updatetimeForRow:(NSInteger)row;
 /**获取mp3的URL***/
 -(NSString*)mp3URLForRow:(NSInteger)row;
-
+-(NSString*)urlStringForcoverForRow:(NSInteger)row;
 
 /**获取表头的coverURL***/
 -(NSURL*)getUrlForHeader;

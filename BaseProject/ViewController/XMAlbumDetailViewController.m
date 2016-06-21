@@ -10,7 +10,7 @@
 #import "AlbumListCell.h"
 #import "AlbumPlayController.h"
 #import "AlbumDetailView.h"
-
+#import "UIImage+ZMExtension.h"
 
 @interface XMAlbumDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)AMAlbumDatailViewModel* xmVM;
@@ -79,7 +79,7 @@
 }
 -(UITableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [self.view addSubview:_tableView];
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
@@ -107,12 +107,20 @@
     if (cell == nil) {
         cell = [[NSBundle mainBundle]loadNibNamed:@"AlbumListCell" owner:nil options:nil].firstObject;
     }
+    //返回一个带有边框的圆形头像
+    UIImage* image = [UIImage hd_captureCircleImageWithURL:[self.xmVM urlStringForcoverForRow:indexPath.row] andBorderWith:4 andBorderColor:[UIColor orangeColor]];
     cell.titleLb.text = [self.xmVM titleForRow:indexPath.row];
-    [cell.coverIV sd_setImageWithURL:[self.xmVM urlForcoverForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+//    [cell.coverIV sd_setImageWithURL:[self.xmVM urlForcoverForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+    cell.coverIV.image = image;
     cell.playCountsLb.text = [self.xmVM playtimesRorRow:indexPath.row];
     cell.durationLb.text = [self.xmVM durationForRow:indexPath.row];
     cell.commmentLb.text = [self.xmVM commentdForRow:indexPath.row];
     cell.updatetimeLb.text = [self.xmVM updatetimeForRow:indexPath.row];
+    //cell的背景色
+    cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_bg_n"]];
+    //设置cell被选中后的颜色
+    cell.selectedBackgroundView = [[UIView alloc]init];
+    cell.selectedBackgroundView.backgroundColor = kRGBColor(250, 255, 254);
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeadrInSection:(NSInteger)section{
@@ -125,7 +133,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     AlbumPlayController* vc1 = [AlbumPlayController defaultWithPlayUrl:[self.xmVM mp3URLForRow:indexPath.row]];
     [self.navigationController pushViewController:vc1 animated:YES];
 }

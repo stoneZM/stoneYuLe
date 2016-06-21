@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *durationLb;
 @property (weak, nonatomic) IBOutlet UILabel *updatetimeLb;
 
+
 @end

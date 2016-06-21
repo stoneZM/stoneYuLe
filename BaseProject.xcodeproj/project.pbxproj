@@ -46,6 +46,7 @@
 		8E2FACB31D137F67003B313B /* XMAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB21D137F67003B313B /* XMAlbumModel.m */; };
 		8E2FACB61D138AC8003B313B /* XMAlbumVIewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB51D138AC8003B313B /* XMAlbumVIewControllerViewController.m */; };
 		8E2FACB91D138AFC003B313B /* XMAlbumViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB81D138AFC003B313B /* XMAlbumViewModel.m */; };
+		8E33CF3A1D18EBB100B35806 /* UIImage+ZMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */; };
 		8E5872311D123371008F0F00 /* XMCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5872301D123371008F0F00 /* XMCategoryCell.m */; };
 		8E91DAFC1D15880500F85C51 /* XMTracksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E91DAFB1D15880500F85C51 /* XMTracksModel.m */; };
 		8E91DAFF1D15A15C00F85C51 /* AlbumPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E91DAFE1D15A15C00F85C51 /* AlbumPlayController.m */; };
@@ -139,6 +140,8 @@
 		8E2FACB51D138AC8003B313B /* XMAlbumVIewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumVIewControllerViewController.m; sourceTree = "<group>"; };
 		8E2FACB71D138AFC003B313B /* XMAlbumViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlbumViewModel.h; sourceTree = "<group>"; };
 		8E2FACB81D138AFC003B313B /* XMAlbumViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumViewModel.m; sourceTree = "<group>"; };
+		8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZMExtension.h"; sourceTree = "<group>"; };
+		8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZMExtension.m"; sourceTree = "<group>"; };
 		8E58722F1D123371008F0F00 /* XMCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCategoryCell.h; sourceTree = "<group>"; };
 		8E5872301D123371008F0F00 /* XMCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMCategoryCell.m; sourceTree = "<group>"; };
 		8E91DAFA1D15880500F85C51 /* XMTracksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTracksModel.h; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				8E15AFCA1D15089600CF976B /* ZmImageView.m */,
 				8ED498471D17FCD500052633 /* UIImage+Extension.h */,
 				8ED498481D17FCD500052633 /* UIImage+Extension.m */,
+				8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */,
+				8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */,
 				8E2FAC9A1D13758A003B313B /* WMMenuView */,
 				8E2FACA51D13758A003B313B /* WMPageConst.h */,
 				8E2FACA61D13758A003B313B /* WMPageController.h */,
@@ -607,6 +612,7 @@
 				8E91DAFF1D15A15C00F85C51 /* AlbumPlayController.m in Sources */,
 				8E2FAC991D136C5A003B313B /* XMListViewModel.m in Sources */,
 				8ED498461D17EBD400052633 /* iCarousel.m in Sources */,
+				8E33CF3A1D18EBB100B35806 /* UIImage+ZMExtension.m in Sources */,
 				8E2FACAC1D13758A003B313B /* WMScrollView.m in Sources */,
 				8E15AFC81D15072F00CF976B /* AlbumDetailView.m in Sources */,
 				8ED498491D17FCD500052633 /* UIImage+Extension.m in Sources */,

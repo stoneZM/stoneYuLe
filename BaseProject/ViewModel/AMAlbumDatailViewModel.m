@@ -45,6 +45,9 @@
     NSString* path = [self modelForRow:row].coverSmall;
     return [NSURL URLWithString:path];
 }
+-(NSString*)urlStringForcoverForRow:(NSInteger)row{
+    return [self modelForRow:row].coverSmall;
+}
 /***获取标题**/
 -(NSString*)titleForRow:(NSInteger)row{
     return [self modelForRow:row].title;

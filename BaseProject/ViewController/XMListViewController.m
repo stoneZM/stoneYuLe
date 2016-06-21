@@ -122,6 +122,9 @@
         cell.topTitleLb.text = [self.XMvm titleForSection:indexPath.section ForRow:indexPath.row];
         cell.topDescLb.text =  [self.XMvm descForSection:indexPath.section ForRow:indexPath.row];
         DDLogVerbose(@"%@",[self.XMvm descForSection:indexPath.section ForRow:indexPath.row]);
+        cell.selectedBackgroundView = [[UIView alloc]init];
+        cell.selectedBackgroundView.backgroundColor = kRGBColor(250, 255, 254);
+
         return cell;
     }else{
 
@@ -134,13 +137,16 @@
      cell.descLb.text =  [self.XMvm descForSection:indexPath.section ForRow:indexPath.row];
      cell.playTimesLb.text = [self.XMvm playTimesForSection:indexPath.section ForRow:indexPath.row];
      cell.totalNumLb.text = [self.XMvm tracksForSection:indexPath.section ForRow:indexPath.row];
+        //更改cell选中时的背景颜色
+        cell.selectedBackgroundView = [[UIView alloc]init];
+        cell.selectedBackgroundView.backgroundColor = kRGBColor(250, 255, 254);
         return cell;
     }
 }
 
 //点击某行推出专辑列表
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     //第一个分区有不同的解析，所以对应不同的控制器  Top每天50
     if (indexPath.section == 0) {
         DDLogVerbose(@"********点击了TOP50单元格************");

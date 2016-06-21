@@ -82,6 +82,8 @@
     cell.nickNameLb.text = [self.xmVM getNickNameForRow:indexPath.row];
     cell.tracksLb.text = [self.xmVM getTracksForRow:indexPath.row];
     [cell.coverIV sd_setImageWithURL:[self.xmVM getUrlForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+    cell.selectedBackgroundView = [[UIView alloc]init];
+    cell.selectedBackgroundView.backgroundColor = kRGBColor(250, 255, 254);
     return cell;
 }
 -(void)setColorRorFirstThreeRow:(NSInteger)row sender:(TopAlbumListCell*)cell{
