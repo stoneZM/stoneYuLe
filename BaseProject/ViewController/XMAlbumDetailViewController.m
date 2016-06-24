@@ -8,17 +8,24 @@
 
 #import "XMAlbumDetailViewController.h"
 #import "AlbumListCell.h"
-#import "AlbumPlayController.h"
 #import "AlbumDetailView.h"
 #import "UIImage+ZMExtension.h"
-
+#import "MusicPlayController.h"
 @interface XMAlbumDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)AMAlbumDatailViewModel* xmVM;
 @property (nonatomic,strong)UITableView* tableView;
 @property (nonatomic,strong)AlbumDetailView* headerView;
+@property (nonatomic,strong)MusicPlayController* musicPlayer;
 @end
 
 @implementation XMAlbumDetailViewController
+
+//-(MusicPlayController *)musicPlayer{
+//    if (_musicPlayer == nil) {
+//        _musicPlayer = [[MusicPlayController alloc]initWithNibName:@"AlbumPlayController" bundle:nil];
+//    }
+//    return _musicPlayer;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,14 +34,33 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.xmVM refreshDataCompletionHandle:^(NSError *error) {
-            self.tableView.tableHeaderView = self.headerView;
-            [self.tableView.header endRefreshing];
-            [self.tableView reloadData];
+            if (error) {
+                //显示无网络连接提示
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.square = NO;
+                hud.labelText = @"没网你玩个屁啊!";
+                [hud hide:YES afterDelay:1.f];
+                [self.tableView.header endRefreshing];
+            }else{
+                self.tableView.tableHeaderView = self.headerView;
+                [self.tableView.header endRefreshing];
+                [self.tableView reloadData];
+            }
         }];
     }];
     [self.tableView.header beginRefreshing];
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self.xmVM getMoreDataCompletionHandle:^(NSError *error) {
+            if (error) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.square = NO;
+                hud.labelText = @"没网你玩个屁啊!";
+                [hud hide:YES afterDelay:1.f];
+                [self.tableView.footer endRefreshing];
+                return;
+            }
             if (self.xmVM.pageID == self.xmVM.maxPageId) {
                 [self.tableView.footer endRefreshingWithNoMoreData];
             }else{
@@ -111,7 +137,7 @@
     UIImage* image = [UIImage hd_captureCircleImageWithURL:[self.xmVM urlStringForcoverForRow:indexPath.row] andBorderWith:4 andBorderColor:[UIColor orangeColor]];
     cell.titleLb.text = [self.xmVM titleForRow:indexPath.row];
 //    [cell.coverIV sd_setImageWithURL:[self.xmVM urlForcoverForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
-    cell.coverIV.image = image;
+        cell.coverIV.image = image;
     cell.playCountsLb.text = [self.xmVM playtimesRorRow:indexPath.row];
     cell.durationLb.text = [self.xmVM durationForRow:indexPath.row];
     cell.commmentLb.text = [self.xmVM commentdForRow:indexPath.row];
@@ -119,8 +145,7 @@
     //cell的背景色
     cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_bg_n"]];
     //设置cell被选中后的颜色
-    cell.selectedBackgroundView = [[UIView alloc]init];
-    cell.selectedBackgroundView.backgroundColor = kRGBColor(250, 255, 254);
+    cell.selectedBackgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_bg_c"]];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeadrInSection:(NSInteger)section{
@@ -132,10 +157,21 @@
     cell.preservesSuperviewLayoutMargins = NO;
 }
 
+//内存中只能存在一个 MusicPlayController
+static MusicPlayController* vc = nil;
+-(MusicPlayController*)defaultMyself{
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        vc = [[MusicPlayController alloc]initWithNibName:@"AlbumPlayController" bundle:nil];;
+    });
+    return vc;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AlbumPlayController* vc1 = [AlbumPlayController defaultWithPlayUrl:[self.xmVM mp3URLForRow:indexPath.row]];
-    [self.navigationController pushViewController:vc1 animated:YES];
+
+    [[self defaultMyself] showWithPlayUrls:[self.xmVM mp3URLsForMusicPlayer] coverIV:[self.xmVM urlStringForcoverForRow:indexPath.row] index:indexPath.row musicName:[self.xmVM titleForRow:indexPath.row]nickName:[self.xmVM getnickNameForHeader]];
+
 }
 
 

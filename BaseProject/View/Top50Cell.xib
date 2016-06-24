@@ -48,7 +48,7 @@
                 <outlet property="topCoverIV" destination="pU7-mL-80S" id="jGE-Ne-nxv"/>
                 <outlet property="topTitleLb" destination="G7x-X2-PAl" id="XEz-7f-G7B"/>
             </connections>
-            <point key="canvasLocation" x="490" y="323"/>
+            <point key="canvasLocation" x="-18" y="223"/>
         </tableViewCell>
     </objects>
 </document>

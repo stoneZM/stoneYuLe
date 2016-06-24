@@ -17,6 +17,10 @@
 
 
     [XMCatageoryNetworking getXMCatagoryListCompletionHandle:^(XMCatageoryModel* model , NSError *error) {
+        if (error) {
+            completionHandle(error);
+            return;
+        }
         [self.dataArr removeAllObjects];
         [self.dataArr addObjectsFromArray:model.list];
         completionHandle(error);

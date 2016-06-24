@@ -28,6 +28,8 @@
 
 /**获取coverIV的URL***/
 -(NSURL*)urlForcoverForRow:(NSInteger)row;
+
+
 /***获取标题**/
 -(NSString*)titleForRow:(NSInteger)row;
 /***获取播放数**/
@@ -42,6 +44,13 @@
 -(NSString*)mp3URLForRow:(NSInteger)row;
 -(NSString*)urlStringForcoverForRow:(NSInteger)row;
 
+/**获取内存中所有的音乐地址*/
+-(NSArray*)mp3URLsForMusicPlayer;
+
+/***获取播放时长给播放界面**/
+-(NSInteger)durationForPlayVCForRow:(NSInteger)row;
+
+
 /**获取表头的coverURL***/
 -(NSURL*)getUrlForHeader;
 /**获取题目***/
@@ -52,6 +61,8 @@
 -(NSString*)getPlayCountsForHeader;
 /****获取更新时间*****/
 -(NSString*)getUpdateTimeForHeader;
+
+
 
 
 @end

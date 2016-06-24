@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#warning 约束还有问题
+
 @interface TopAlbumListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *rowNumLb;
 @property (weak, nonatomic) IBOutlet UIImageView *coverIV;

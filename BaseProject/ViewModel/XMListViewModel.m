@@ -187,6 +187,10 @@
 //网络请求数据
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     [XMCatageoryNetworking getXMListWithCategoryId:self.categoryID statEvent:self.staEvent statModule:self.staModule compltetionHandle:^(XMListModel* model , NSError *error) {
+        if (error) {
+            completionHandle(error);
+            return ;
+        }
         [self.keywords removeAllObjects];
         [self.focusImages removeAllObjects];
         [self.categoryContents removeAllObjects];

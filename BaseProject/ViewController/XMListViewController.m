@@ -42,7 +42,13 @@
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.XMvm getDataFromNetCompleteHandle:^(NSError *error) {
             if (error) {
-                self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_bg_noData_7"]];
+                //显示无网络连接提示
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.square = NO;
+                hud.labelText = @"没网你玩个屁啊!";
+                [hud hide:YES afterDelay:1.f];
+                [self.tableView.header endRefreshing];
             }
             self.tableView.tableHeaderView = [self headerView];
             [self.tableView reloadData];
@@ -53,7 +59,7 @@
 }
 -(UIBarButtonItem *)item{
     if (_item == nil) {
-        _item = [[UIBarButtonItem alloc]bk_initWithTitle:@"更多分类" style:UIBarButtonItemStyleBordered handler:^(id sender) {
+        _item = [[UIBarButtonItem alloc]bk_initWithTitle:@"更多精彩" style:UIBarButtonItemStyleBordered handler:^(id sender) {
              DDLogVerbose(@"--------点击了更多分类按钮--------");
             self.wmVC =  [self getPages];
             [self.navigationController pushViewController:self.wmVC animated:YES];

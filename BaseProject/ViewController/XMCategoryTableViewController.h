@@ -10,4 +10,7 @@
 
 @interface XMCategoryTableViewController : UITableViewController
 @property (nonatomic,strong)NSNumber* infoType;
+@property (nonatomic,strong)UIButton* playBtn;
+
++(instancetype)standVC;
 @end

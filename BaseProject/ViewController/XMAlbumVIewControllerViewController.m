@@ -29,12 +29,32 @@
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.xmVM refreshDataCompletionHandle:^(NSError *error) {
-            [self.tableView.header endRefreshing];
-            [self.tableView reloadData];
+            if (error) {
+                //显示无网络连接提示
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.square = NO;
+                hud.labelText = @"没网你玩个屁啊!";
+                [hud hide:YES afterDelay:1.f];
+                [self.tableView.header endRefreshing];
+            }
+            else{
+                [self.tableView.header endRefreshing];
+                [self.tableView reloadData];
+            }
         }];
     }];
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self.xmVM getMoreDataCompletionHandle:^(NSError *error) {
+            if (error) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeCustomView;
+                hud.square = NO;
+                hud.labelText = @"没网你玩个屁啊!";
+                [hud hide:YES afterDelay:1.f];
+                [self.tableView.footer endRefreshing];
+                return;
+            }
             if (self.xmVM.pageId == self.xmVM.maxPageId) {
                 [self.tableView.footer endRefreshingWithNoMoreData];
             }else{
@@ -52,7 +72,6 @@
     }
     return _IDdic;
 }
-
 
 -(XMAlbumViewModel *)xmVM{
     if (_xmVM == nil) {

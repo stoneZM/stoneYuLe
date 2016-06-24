@@ -45,8 +45,9 @@
     NSString* path = [self modelForRow:row].coverSmall;
     return [NSURL URLWithString:path];
 }
+
 -(NSString*)urlStringForcoverForRow:(NSInteger)row{
-    return [self modelForRow:row].coverSmall;
+    return [self modelForRow:row].coverMiddle;
 }
 /***获取标题**/
 -(NSString*)titleForRow:(NSInteger)row{
@@ -77,6 +78,12 @@
     NSInteger sec = duration % 60;
     return [NSString stringWithFormat:@"%ld:%ld",min,sec];
 }
+/***获取播放时长给播放界面**/
+-(NSInteger)durationForPlayVCForRow:(NSInteger)row{
+    return [self modelForRow:row].duration;
+}
+
+
 /***获取更新时间**/
 -(NSString*)updatetimeForRow:(NSInteger)row{
     NSInteger updatetime = [self modelForRow:row].createdAt;
@@ -91,6 +98,15 @@
 -(NSString*)mp3URLForRow:(NSInteger)row{
     return [self modelForRow:row].playUrl32;
 }
+/**获取内存中所有的音乐地址*/
+-(NSArray*)mp3URLsForMusicPlayer{
+    NSMutableArray* arr = [NSMutableArray new];
+    for (int i = 0; i < self.dataArr.count; i++) {
+        [arr addObject:[self modelForRow:i].playUrl32];
+    }
+    return [arr copy];
+}
+
 
 //获取每一行的数据模型
 -(XMAlbumDetailDataTracksListModel*)modelForRow:(NSInteger)row{
@@ -103,6 +119,10 @@
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     if (self.pageID == 1) {
     [XMCatageoryNetworking getXMAlbumDetailWithAlbumId:self.albumID statPage:self.statPage statPosition:self.position compltetionHandle:^(XMAlbumDetailModel* model, NSError *error) {
+        if (error) {
+            completionHandle(error);
+            return ;
+        }
         self.model = model.data.album;
         [self.dataArr removeAllObjects];
         [self.dataArr addObjectsFromArray:model.data.tracks.list];
@@ -150,7 +170,12 @@
 /****获取更新时间*****/
 -(NSString*)getUpdateTimeForHeader{
     NSInteger time = self.model.updatedAt;
-    return [NSString stringWithFormat:@"%ld",time];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:time/1000];
+    DDLogVerbose(@"---------%@=========",date);
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* str = [formatter stringFromDate:date];
+    return [NSString stringWithFormat:@"%@更新",str];
 }
 
 

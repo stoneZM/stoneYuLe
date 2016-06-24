@@ -65,6 +65,10 @@
 //请求数据
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     [XMCatageoryNetworking getXMAlbumWithCategoryId:self.categoryId KeywordID:self.keywordId pageId:self.pageId completionHandle:^(XMAlbumModel* model, NSError *error) {
+        if (error) {
+            completionHandle(error);
+            return ;
+        }
         self.maxPageId = model.maxPageId;
         if (self.pageId == 1) {
             [self.dataArr removeAllObjects];

@@ -10,11 +10,6 @@
 #import "AMAlbumDatailViewModel.h"
 @interface XMAlbumDetailViewController : UIViewController
 
-/**
- AlbumID
- statPage
- position
- */
 @property (nonatomic,assign)NSInteger albumID;
 @property (nonatomic,assign)NSInteger position;
 

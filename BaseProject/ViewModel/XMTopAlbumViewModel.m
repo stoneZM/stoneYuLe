@@ -50,6 +50,10 @@
 }
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     [XMCatageoryNetworking getTopAlbumWithkey:self.key pageID:self.pageId statEven:self.statEven statPage:self.statPage complatetionHandle:^(XMTopAlbumModel* model, NSError *error) {
+        if (error) {
+            completionHandle(error);
+            return ;
+        }
         self.maxPage = model.maxPageId;
         if (self.pageId == 1 ) {
             [self.dataArr removeAllObjects];

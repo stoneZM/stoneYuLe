@@ -12,6 +12,7 @@ static AFHTTPSessionManager *manager = nil;
 
 @implementation BaseNetManager
 
+
 + (AFHTTPSessionManager *)sharedAFManager{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -33,7 +34,6 @@ static AFHTTPSessionManager *manager = nil;
     }
     //把字符串中的中文转为%号形势
     NSCharacterSet* set = [NSCharacterSet URLFragmentAllowedCharacterSet];
-    NSLog(@"%@",percentPath);
     return [percentPath stringByAddingPercentEncodingWithAllowedCharacters:set];
 }
 

@@ -18,19 +18,46 @@
 @property (nonatomic,strong)UIImageView* noDataIV;
 @end
 @implementation XMCategoryTableViewController
-//没有数据时显示的图片
-//-(UIImageView *)noDataIV{
-//    if (_noDataIV == nil) {
-//        _noDataIV = [[UIImageView alloc]initWithFrame:CGRectZero];
-////        _noDataIV.image = [UIImage imageNamed:@"cell_bg_noData_7"];
-//        _noDataIV.contentMode = UIViewContentModeScaleAspectFill;
-//        _noDataIV.backgroundColor = [UIColor redColor];
-//    }
-//    return _noDataIV;
-//}
+
+//设置全局的按钮
+-(UIButton*)createBtn{
+   static UIButton* btn = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    });
+    return btn;
+}
++(instancetype)standVC{
+   static XMCategoryTableViewController* vc = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        vc = [XMCategoryTableViewController new];
+    });
+    return vc;
+}
+
+-(UIButton *)playBtn{
+    if (_playBtn == nil) {
+        _playBtn = [self createBtn];
+        UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
+        [_playBtn setBackgroundImage:[UIImage imageNamed:@"toolbar_play_n_p"] forState:UIControlStateNormal];
+        [_playBtn setBackgroundImage:[UIImage imageNamed:@"toolbar_pause_n_p"] forState:UIControlStateSelected];
+        [currentWindow addSubview:_playBtn];
+        //        [self.view addSubview:_button];
+        [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(60,60));
+            make.centerX.mas_equalTo(0);
+            make.bottom.mas_equalTo(-0);
+        }];
+    }
+    return _playBtn;
+}
 
 
 
+
+//头部的视图
 -(UIButton *)headerBt{
     if (_headerBt == nil) {
         _headerBt = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,19 +88,24 @@
     self.navigationItem.title = @"听";
     self.tableView.tableFooterView = [UIView new];
     self.tableView.tableHeaderView = self.headerBt;
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.xmVM getDataFromNetCompleteHandle:^(NSError *error) {
-            if (error) {
-                //  网络请求出错时，显示此图片
-
-            }else{
-                [self.noDataIV removeFromSuperview];//如果成功，则移除背景图片
-            [self.headerIV sd_setImageWithURL:[self.xmVM URLForHeader] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
-                [self.tableView reloadData];
-            }
-            [self.tableView.header endRefreshing];
+    self.playBtn.hidden = NO;
+        self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self.xmVM getDataFromNetCompleteHandle:^(NSError *error) {
+                if (error) {
+                    //显示无网络连接提示
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                        hud.mode = MBProgressHUDModeCustomView;
+                        hud.square = NO;
+                        hud.labelText = @"没网你玩个屁啊!";
+                        [hud hide:YES afterDelay:1.f];
+                        [self.tableView.header endRefreshing];
+                }else{
+                    [self.headerIV sd_setImageWithURL:[self.xmVM URLForHeader] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+                      [self.tableView reloadData];
+                }
+                [self.tableView.header endRefreshing];
+            }];
         }];
-         }];
     [self.tableView.header beginRefreshing];
 }
 
