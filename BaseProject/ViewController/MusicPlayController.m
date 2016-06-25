@@ -5,13 +5,15 @@
 //  Created by stone on 16/6/23.
 //  Copyright © 2016年 zm. All rights reserved.
 //
-
+#import "XMCategoryTableViewController.h"
 #import "MusicPlayController.h"
 #import "UIView+Extension.h"
 #import <AVFoundation/AVFoundation.h>
 #import "UIImage+ZMExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
 @interface MusicPlayController ()
+
+@property (nonatomic,strong)XMCategoryTableViewController* vc;
 /**
  用于接收歌曲图片
  */
@@ -54,7 +56,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *playOrPuseBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
-
+@property (nonatomic,assign)NSInteger currentindex;
 @end
 
 
@@ -64,6 +66,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -71,7 +74,19 @@
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 
     [self resignFirstResponder];
+
 }
+
+/**
+ 存放所有的音乐模型
+ */
+-(NSArray *)musicModels{
+    if (_musicModels == nil) {
+        _musicModels = [NSArray new];
+    }
+    return _musicModels;
+}
+
 
 -(NSMutableDictionary *)musicPlayer{
     if (_musicPlayer == nil) {
@@ -80,122 +95,76 @@
     return _musicPlayer;
 }
 
-/**
- 存放所有的音乐url
- */
--(NSArray *)allMusicUrls{
-    if (_allMusicUrls == nil) {
-        _allMusicUrls = [NSArray new];
-    }
-    return _allMusicUrls;
+
+-(XMAlbumDetailDataTracksListModel*)getModelForindex:(NSInteger)index{
+    return self.musicModels[index];
 }
 
--(void)showWithPlayUrls:(NSArray *)allMusicUrls coverIV:(NSString *)coverURL index:(NSInteger)index musicName:(NSString*)name nickName:(NSString *)nickName{
-
-    self.allMusicUrls = allMusicUrls;
-    self.currentIndex = index;
-    self.coverURL = coverURL;
-    self.musicName = name;
-    self.nickName = nickName;
+-(void)showWithMusicModels:(NSArray *)musicModels index:(NSInteger)index{
+    self.musicModels = musicModels;
+    self.currentindex = index;
 
     self.playOrPuseBtn.selected = NO;
 
     UIWindow* windows = [UIApplication sharedApplication].keyWindow;
-        [windows addSubview:self.view];
-        self.view.frame = windows.bounds;
-        self.view.y = windows.height;
-        self.view.hidden = NO;
-        windows.userInteractionEnabled = NO;            //关闭界面交互，防止重复点击
-
-
-
-        [UIView animateWithDuration:0.5 animations:^{
-            self.view.y = 0;
-        } completion:^(BOOL finished) {
-
-        [self setCoverImageViewWithURL:coverURL];
-
-        windows.userInteractionEnabled = YES;           //打开界面交互
-            [self playMusic];//播放音乐
-        }];
-}
-/**
- 播放界面隐藏
- */
-- (IBAction)musicBackBtn:(id)sender {
-
-    UIWindow* windows = [UIApplication sharedApplication].keyWindow;
-
-    windows.userInteractionEnabled = NO;
+    [windows addSubview:self.view];
+    self.view.frame = windows.bounds;
+    self.view.y = windows.height;
+    self.view.hidden = NO;
+    windows.userInteractionEnabled = NO;                //关闭界面交互，防止重复点击
 
     [UIView animateWithDuration:0.5 animations:^{
-        self.view.y = self.view.height;
+        self.view.y = 0;
     } completion:^(BOOL finished) {
 
-        windows.userInteractionEnabled = YES;
-        self.view.hidden = YES;
+        [self setCoverImageView];
+
+        windows.userInteractionEnabled = YES;           //打开界面交互
+        [self playMusic];                               //播放音乐
     }];
 
 }
-/**
- 设置背景图片
- */
--(void)setCoverImageViewWithURL:(NSString*)coverURL{
+-(void)setCoverImageView{
 
-    UIImage* image = [UIImage hd_captureCircleImageWithURL:coverURL andBorderWith:0.5 andBorderColor:[UIColor blackColor]];
-    self.coverImageView.image = image;
+    [self.coverImageView sd_setImageWithURL: [NSURL URLWithString:[self getModelForindex:self.currentindex].coverMiddle] placeholderImage:[UIImage imageNamed:@"cell_bg_noData_2"]];
 }
 
 
 -(void)playMusic{
 
-    AVPlayer* player = self.musicPlayer[@(self.currentIndex)];  //根据传进来的url判断是否有播放器在播放
+    AVPlayer* player = self.musicPlayer[@(self.currentindex)];   //根据传进来的url判断是否有播放器在播放
 
-      if (!player) {                                              //如果没有，则说明是新的url，那么就移除原来的播放器
+    if (!player) {                                               //如果没有，则说明是新的url，那么就移除原来的播放器
 
         [self removeTimer];
         [self resetProgress];
-        for (NSString* key in self.musicPlayer) {               //在新建之前，先移除定时器，重置进度条
+        for (NSString* key in self.musicPlayer) {                //在新建之前，先移除定时器，重置进度条
             [self.musicPlayer removeObjectForKey:key];
             self.musicPlayer = nil;
         }
+        self.avset= [AVURLAsset URLAssetWithURL:[NSURL URLWithString:[self getModelForindex:self.currentindex].playPathHq] options:nil];
+        self.avItem = [AVPlayerItem playerItemWithAsset:self.avset];
 
-    self.avset= [AVURLAsset URLAssetWithURL:[NSURL URLWithString:self.allMusicUrls[self.currentIndex]] options:nil];
-     self.avItem = [AVPlayerItem playerItemWithAsset:self.avset];
-
-    // 添加视频播放结束通知
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(musicPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.avItem];
+                                                                    //添加视频播放结束通知
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(musicPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.avItem];
 
         player = [AVPlayer playerWithPlayerItem:self.avItem];     //并且兴建一个播放器
+        self.musicPlayer[@(self.currentindex)] = player;          //将此播放器存入缓存 ，为下一次判断做准备
+        [self backOrForWordPlay:player];                          //开启前后台播放模式
+        [self rotationImageView];                                //旋转图片
+        [self addTimer];                                         //开启新的定时器
 
-        self.musicPlayer[@(self.currentIndex)] = player;         //将此播放器存入缓存 ，为下一次判断做准备
-
-        [self backOrForWordPlay:player];                        //开启前后台播放模式
-        [self rotationImageView];                               //旋转图片
-        [self addTimer];                                        //开启新的定时器
-    }
-    else {
-        return ;
-    }
-    [self initialize];                                          //设置后台播放所需的方法；
-    [self configNowPlayingInfoCenter];
+    }else {
+            return ;
+        }
+        [self initialize];                                        //设置后台播放所需的方法；
+        [self configNowPlayingInfoCenter];                          //设置进入后台之后的显示内容
 }
-
-/**当一首播放结束时，自动跳到下一曲*/
-- (void)musicPlayDidEnd:(NSNotification *)notification{
-
-    if (self.currentIndex == self.allMusicUrls.count-1) {
-        return;
-    }
-    self.currentIndex += 1;
-    [self playMusic];
-
-}
-
 
 /**
- 暂停与播放设置
+ 暂停或者播放设置
  */
+
 - (IBAction)playOrPurse:(UIButton *)sender {
 
     AVPlayer* player = nil ;
@@ -204,7 +173,7 @@
     }
     sender.selected = !sender.selected;             //按钮状态反选
     if (sender.isSelected) {
-         [player pause];   //选中按钮，暂停歌曲
+        [player pause];   //选中按钮，暂停歌曲
         [self removeTimer];
     }else{
         [player play];
@@ -215,28 +184,68 @@
 /**
  播放下一首
  */
+
 - (IBAction)nextBtn:(UIButton *)sender {
     //TODO:下一首播放
-    if (self.currentIndex == self.allMusicUrls.count -1) {
-        self.currentIndex = 0;
+    if (self.currentindex == self.musicModels.count -1) {
+        self.currentindex = 0;
     }else{
-    self.currentIndex += 1;
+        self.currentindex += 1;
     }
-    [self playMusic];
-}
-/**
- 播放上一首
- */
-- (IBAction)preBtn:(UIButton *)sender {
-    //TODO: 上一首播放
-    if (self.currentIndex == 0) {
-        self.currentIndex = self.allMusicUrls.count-1;
-    }else{
-        self.currentIndex -= 1;
-    }
+    [self setCoverImageView];
+    [self configNowPlayingInfoCenter];
     [self playMusic];
 }
 
+/**
+ 播放上一首
+ */
+
+- (IBAction)preBtn:(UIButton *)sender {
+    //TODO: 上一首播放
+    if (self.currentindex == 0) {
+        self.currentindex = self.musicModels.count-1;
+    }else{
+        self.currentindex -= 1;
+    }
+    [self setCoverImageView];
+    [self configNowPlayingInfoCenter];
+    [self playMusic];
+}
+
+/**
+ 播放界面推出
+ */
+
+- (IBAction)musicBackBtn:(id)sender {
+
+    UIWindow* windows = [UIApplication sharedApplication].keyWindow;
+
+    windows.userInteractionEnabled = NO;
+
+    [UIView animateWithDuration:0.5 animations:^{
+
+        self.view.y = self.view.height;
+
+    } completion:^(BOOL finished) {
+
+        windows.userInteractionEnabled = YES;
+        self.view.hidden = YES;
+
+    }];
+
+}
+
+/**当一首播放结束时，自动跳到下一曲*/
+- (void)musicPlayDidEnd:(NSNotification *)notification{
+
+    if (self.currentindex == self.musicModels.count-1) {
+        return;
+    }
+    self.currentindex += 1;
+    [self playMusic];
+
+}
 
 #pragma  mark 点击进度条或者拉动滑块的响应事件
 - (IBAction)tapProgressView:(UITapGestureRecognizer *)sender {
@@ -444,6 +453,7 @@ static AVAudioSession* session = nil;
     return YES;
     
 }
+
 - (void)configNowPlayingInfoCenter {
 
     MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
@@ -451,13 +461,13 @@ static AVAudioSession* session = nil;
     // 初始化播放信息
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     // 专辑名称
-//    info[MPMediaItemPropertyAlbumTitle] = self.playingMusic.name;
+    info[MPMediaItemPropertyAlbumTitle] = [self getModelForindex:self.currentindex].nickname;
     // 歌手
-    info[MPMediaItemPropertyArtist] = self.nickName;
+    info[MPMediaItemPropertyArtist] = [self getModelForindex:self.currentindex].nickname;
     // 歌曲名称
-    info[MPMediaItemPropertyTitle] = self.musicName;
+    info[MPMediaItemPropertyTitle] = [self getModelForindex:self.currentindex].title;
     // 设置图片
-    info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.coverURL]]]];
+    info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self getModelForindex:self.currentindex].coverLarge]]]];
     // 设置持续时间（歌曲的总时间）
     info[MPMediaItemPropertyPlaybackDuration] = @(CMTimeGetSeconds(self.avset.duration));
     // 设置当前播放进度
@@ -475,7 +485,9 @@ static AVAudioSession* session = nil;
     [self becomeFirstResponder];
     // 开始监控
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    }
+    
+
+ }
 
 
 

@@ -169,13 +169,20 @@
 }
 /****获取更新时间*****/
 -(NSString*)getUpdateTimeForHeader{
+
     NSInteger time = self.model.updatedAt;
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:time/1000];
-    DDLogVerbose(@"---------%@=========",date);
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString* str = [formatter stringFromDate:date];
     return [NSString stringWithFormat:@"%@更新",str];
+}
+
+/**
+ 获取这一类的所有歌曲模型
+ */
+-(NSArray*)getAllmusicModels{
+    return self.dataArr;
 }
 
 

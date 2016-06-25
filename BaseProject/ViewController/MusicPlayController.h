@@ -11,17 +11,10 @@
 
 @interface MusicPlayController : UIViewController
 
-@property (nonatomic,strong)NSString* coverURL;
-@property (nonatomic,strong)NSString* playUrl;
-@property (nonatomic,strong)NSArray* allMusicUrls;
-@property (nonatomic,assign)NSInteger currentIndex;
-@property (nonatomic,strong)NSString* musicName;
-@property (nonatomic,strong)NSString* nickName;
 
+@property (nonatomic,strong)NSArray* musicModels;
 
--(void)showWithPlayUrls:(NSArray*)allMusicUrls coverIV:(NSString*)coverURL index:(NSInteger)index musicName:(NSString*)name nickName:(NSString*)nickName;
-
-
+-(void)showWithMusicModels:(NSArray*)musicModels index:(NSInteger)index;
 
 
 @end

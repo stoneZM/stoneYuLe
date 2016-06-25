@@ -19,44 +19,6 @@
 @end
 @implementation XMCategoryTableViewController
 
-//设置全局的按钮
--(UIButton*)createBtn{
-   static UIButton* btn = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    });
-    return btn;
-}
-+(instancetype)standVC{
-   static XMCategoryTableViewController* vc = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        vc = [XMCategoryTableViewController new];
-    });
-    return vc;
-}
-
--(UIButton *)playBtn{
-    if (_playBtn == nil) {
-        _playBtn = [self createBtn];
-        UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
-        [_playBtn setBackgroundImage:[UIImage imageNamed:@"toolbar_play_n_p"] forState:UIControlStateNormal];
-        [_playBtn setBackgroundImage:[UIImage imageNamed:@"toolbar_pause_n_p"] forState:UIControlStateSelected];
-        [currentWindow addSubview:_playBtn];
-        //        [self.view addSubview:_button];
-        [_playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(60,60));
-            make.centerX.mas_equalTo(0);
-            make.bottom.mas_equalTo(-0);
-        }];
-    }
-    return _playBtn;
-}
-
-
-
-
 //头部的视图
 -(UIButton *)headerBt{
     if (_headerBt == nil) {
@@ -88,7 +50,6 @@
     self.navigationItem.title = @"听";
     self.tableView.tableFooterView = [UIView new];
     self.tableView.tableHeaderView = self.headerBt;
-    self.playBtn.hidden = NO;
         self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self.xmVM getDataFromNetCompleteHandle:^(NSError *error) {
                 if (error) {
@@ -149,9 +110,10 @@
 
     //点击左侧按钮，跳到另一页，并将另一页网络请求的参数传给它
     [cell.leftButton bk_addEventHandler:^(id sender) {
+
         XMListViewController* vc = [[XMListViewController alloc]initWithCatagoryID:[self.xmVM IDForLeftBtForSection:indexPath.section ForRow:indexPath.row] staEvent:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row] staModule:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row]];
-//         XMListViewController* vc = [XMListViewController initWithCatagoryID:[self.xmVM IDForLeftBtForSection:indexPath.section ForRow:indexPath.row] staEvent:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row] staModule:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row]];
-        [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+
     } forControlEvents:UIControlEventTouchUpInside];
 
     //点击有侧按钮，跳到另一页，并将另一页网络请求的参数传给它
@@ -167,9 +129,11 @@
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
     cell.separatorInset = UIEdgeInsetsZero;
     cell.layoutMargins = UIEdgeInsetsZero;
     cell.preservesSuperviewLayoutMargins = NO;
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

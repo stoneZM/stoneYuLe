@@ -63,6 +63,12 @@
 -(NSString*)getUpdateTimeForHeader;
 
 
+/**
+ 获取这一类的所有歌曲模型
+ */
+-(NSArray*)getAllmusicModels;
+
+
 
 
 @end

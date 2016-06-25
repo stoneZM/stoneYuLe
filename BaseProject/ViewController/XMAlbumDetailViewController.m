@@ -15,17 +15,10 @@
 @property (nonatomic,strong)AMAlbumDatailViewModel* xmVM;
 @property (nonatomic,strong)UITableView* tableView;
 @property (nonatomic,strong)AlbumDetailView* headerView;
-@property (nonatomic,strong)MusicPlayController* musicPlayer;
 @end
 
 @implementation XMAlbumDetailViewController
 
-//-(MusicPlayController *)musicPlayer{
-//    if (_musicPlayer == nil) {
-//        _musicPlayer = [[MusicPlayController alloc]initWithNibName:@"AlbumPlayController" bundle:nil];
-//    }
-//    return _musicPlayer;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -164,13 +157,15 @@ static MusicPlayController* vc = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         vc = [[MusicPlayController alloc]initWithNibName:@"AlbumPlayController" bundle:nil];;
+
     });
     return vc;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    [[self defaultMyself] showWithPlayUrls:[self.xmVM mp3URLsForMusicPlayer] coverIV:[self.xmVM urlStringForcoverForRow:indexPath.row] index:indexPath.row musicName:[self.xmVM titleForRow:indexPath.row]nickName:[self.xmVM getnickNameForHeader]];
+  
+    [[self defaultMyself] showWithMusicModels:[self.xmVM getAllmusicModels] index:indexPath.row];
 
 }
 
