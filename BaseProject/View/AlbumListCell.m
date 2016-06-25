@@ -22,7 +22,12 @@
 }
 
 -(UIImageView *)coverIV{
-    _coverIV.layer.cornerRadius = 22;
+    _coverIV.layer.cornerRadius = _coverIV.bounds.size.width / 2;
+    _coverIV.contentMode = UIViewContentModeScaleAspectFill;
+    _coverIV.layer.borderWidth = 3;
+    _coverIV.layer.borderColor = [UIColor orangeColor].CGColor;
+    [_coverIV setClipsToBounds:YES];
+    [_coverIV.layer setMasksToBounds:YES];
     return _coverIV;
 }
 

@@ -134,10 +134,10 @@
         cell = [[NSBundle mainBundle]loadNibNamed:@"AlbumListCell" owner:nil options:nil].firstObject;
     }
     //返回一个带有边框的圆形头像
-    UIImage* image = [UIImage hd_captureCircleImageWithURL:[self.xmVM urlStringForcoverForRow:indexPath.row] andBorderWith:4 andBorderColor:[UIColor orangeColor]];
+
+    [cell.coverIV sd_setImageWithURL:[self.xmVM urlForcoverForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
+
     cell.titleLb.text = [self.xmVM titleForRow:indexPath.row];
-//    [cell.coverIV sd_setImageWithURL:[self.xmVM urlForcoverForRow:indexPath.row] placeholderImage:[UIImage imageNamed:@"find_usercover"]];
-        cell.coverIV.image = image;
     cell.playCountsLb.text = [self.xmVM playtimesRorRow:indexPath.row];
     cell.durationLb.text = [self.xmVM durationForRow:indexPath.row];
     cell.commmentLb.text = [self.xmVM commentdForRow:indexPath.row];

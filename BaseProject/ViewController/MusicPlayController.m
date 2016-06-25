@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *preBtn;
 
 
+
 - (IBAction)playOrPurse:(UIButton *)sender;
 - (IBAction)nextBtn:(UIButton *)sender;
 - (IBAction)preBtn:(UIButton *)sender;
@@ -52,10 +53,14 @@
 @property (nonatomic,strong)NSTimer* timer;                   //用于刷新进度条的的定时器
 @property (weak, nonatomic) IBOutlet UIButton *playOrPuseBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+
+
 @end
 
 
 @implementation MusicPlayController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -101,7 +106,9 @@
         self.view.y = windows.height;
         self.view.hidden = NO;
         windows.userInteractionEnabled = NO;            //关闭界面交互，防止重复点击
-    
+
+
+
         [UIView animateWithDuration:0.5 animations:^{
             self.view.y = 0;
         } completion:^(BOOL finished) {
@@ -124,6 +131,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.view.y = self.view.height;
     } completion:^(BOOL finished) {
+
         windows.userInteractionEnabled = YES;
         self.view.hidden = YES;
     }];
