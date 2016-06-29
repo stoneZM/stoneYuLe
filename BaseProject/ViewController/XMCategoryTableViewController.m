@@ -45,9 +45,20 @@
     return _xmVM;
 }
 
+//设置tabBar的图片
+-(void)settabBarImage{
+    UIImage* norImage = [UIImage imageNamed:@"tabbar_sound_n"];
+    norImage = [norImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage* selectedImage = [UIImage imageNamed:@"tabbar_sound_h"];
+    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self.tabBarItem setImage:norImage];
+    [self.tabBarItem setSelectedImage:selectedImage];
+    [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5,0,-5,0)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"听";
+    self.navigationItem.title = @"定制听";
     self.tableView.tableFooterView = [UIView new];
     self.tableView.tableHeaderView = self.headerBt;
         self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -68,6 +79,8 @@
             }];
         }];
     [self.tableView.header beginRefreshing];
+    [Factory addMenuItemToVC:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +91,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"%ld",self.xmVM.sectionNum);
+
     return self.xmVM.sectionNum;
 }
 
@@ -112,13 +125,15 @@
     [cell.leftButton bk_addEventHandler:^(id sender) {
 
         XMListViewController* vc = [[XMListViewController alloc]initWithCatagoryID:[self.xmVM IDForLeftBtForSection:indexPath.section ForRow:indexPath.row] staEvent:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row] staModule:[self.xmVM titleForLeftButtonForSection:indexPath.section ForRow:indexPath.row]];
-            [self.navigationController pushViewController:vc animated:YES];
+        [vc setHidesBottomBarWhenPushed:YES];           //被推出后，隐藏tabBar;
+        [self.navigationController pushViewController:vc animated:YES];
 
     } forControlEvents:UIControlEventTouchUpInside];
 
     //点击有侧按钮，跳到另一页，并将另一页网络请求的参数传给它
     [cell.rightButton bk_addEventHandler:^(id sender) {
         XMListViewController* vc = [[XMListViewController alloc]initWithCatagoryID:[self.xmVM IDForRightBtForSection:indexPath.section ForRow:indexPath.row] staEvent:[self.xmVM titleForRightButtonForSection:indexPath.section ForRow:indexPath.row] staModule:[self.xmVM titleForRightButtonForSection:indexPath.section ForRow:indexPath.row]];
+        [vc setHidesBottomBarWhenPushed:YES];           //被推出后，隐藏tabBar;
         [self.navigationController pushViewController:vc animated:YES];
 
 

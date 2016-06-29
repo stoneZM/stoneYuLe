@@ -13,6 +13,6 @@
 
 @property (nonatomic,strong)NSNumber* infoType;
 
-
+-(void)settabBarImage;
 
 @end

@@ -43,7 +43,10 @@
 /*返回播放次数**/
 -(NSString*)playconutsForRow:(NSInteger)row{
     NSInteger count = [self modelForRow:row].playsCounts;
-    return [NSString stringWithFormat:@"%.1lf万",count*1.0/10000];
+    if (count < 10000) {
+        return [NSString stringWithFormat:@"%ld",count];
+    }
+        return [NSString stringWithFormat:@"%.1lf万",count*1.0/10000];
 }
 /**返回集数**/
 -(NSString*)tracksForRow:(NSInteger)row{

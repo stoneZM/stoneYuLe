@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIImage+ZMExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AudioToolbox/AudioToolbox.h>
 @interface MusicPlayController ()
 
 @property (nonatomic,strong)XMCategoryTableViewController* vc;
@@ -37,6 +38,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *preBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *musicTitleLb;
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLb;
 
 
 - (IBAction)playOrPurse:(UIButton *)sender;
@@ -50,21 +53,36 @@
 @property (nonatomic,strong)AVAsset* avset;
 @property (nonatomic,strong)AVPlayerItem* avItem;
 @property (nonatomic,strong)NSMutableDictionary* musicPlayer;
+@property (nonatomic,strong)NSMutableDictionary* musicPlayer2;
 
 
-@property (nonatomic,strong)NSTimer* timer;                   //用于刷新进度条的的定时器
+@property (nonatomic,strong)NSTimer* timer;               //用于刷新进度条的的定时器
 @property (weak, nonatomic) IBOutlet UIButton *playOrPuseBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @property (nonatomic,assign)NSInteger currentindex;
+
 @end
 
 
 @implementation MusicPlayController
 
 
+-(void)configureCoverImageView{
+
+    //配置动画的图片为圆形带边框
+    self.coverImageView.layer.cornerRadius = self.coverImageView.bounds.size.width / 2;
+    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.coverImageView.layer.borderWidth = 1;
+    self.coverImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.coverImageView setClipsToBounds:YES];
+    [self.coverImageView.layer setMasksToBounds:YES];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureCoverImageView];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -94,6 +112,14 @@
     }
     return _musicPlayer;
 }
+-(NSMutableDictionary *)musicPlayer2{
+    if (_musicPlayer2 == nil) {
+        _musicPlayer2 = [NSMutableDictionary new];
+    }
+    return _musicPlayer2;
+}
+
+
 
 
 -(XMAlbumDetailDataTracksListModel*)getModelForindex:(NSInteger)index{
@@ -127,22 +153,23 @@
 -(void)setCoverImageView{
 
     [self.coverImageView sd_setImageWithURL: [NSURL URLWithString:[self getModelForindex:self.currentindex].coverMiddle] placeholderImage:[UIImage imageNamed:@"cell_bg_noData_2"]];
+    self.musicTitleLb.text = [self getModelForindex:self.currentindex].title;
+    self.nickNameLb.text = [self getModelForindex:self.currentindex].nickname;
+
 }
 
 
 -(void)playMusic{
 
     AVPlayer* player = self.musicPlayer[@(self.currentindex)];   //根据传进来的url判断是否有播放器在播放
-
-    if (!player) {                                               //如果没有，则说明是新的url，那么就移除原来的播放器
-
+    if (!player){                                               //如果没有，则说明是新的url，那么就移除原来的播放器
         [self removeTimer];
         [self resetProgress];
         for (NSString* key in self.musicPlayer) {                //在新建之前，先移除定时器，重置进度条
             [self.musicPlayer removeObjectForKey:key];
             self.musicPlayer = nil;
         }
-        self.avset= [AVURLAsset URLAssetWithURL:[NSURL URLWithString:[self getModelForindex:self.currentindex].playPathHq] options:nil];
+        self.avset= [AVURLAsset URLAssetWithURL:[NSURL URLWithString:[self getModelForindex:self.currentindex].playUrl32] options:nil];
         self.avItem = [AVPlayerItem playerItemWithAsset:self.avset];
 
                                                                     //添加视频播放结束通知
@@ -150,8 +177,9 @@
 
         player = [AVPlayer playerWithPlayerItem:self.avItem];     //并且兴建一个播放器
         self.musicPlayer[@(self.currentindex)] = player;          //将此播放器存入缓存 ，为下一次判断做准备
+//        self.musicPlayer[@"title"] = [self getModelForindex:self.currentindex].title;
         [self backOrForWordPlay:player];                          //开启前后台播放模式
-        [self rotationImageView];                                //旋转图片
+        [self addAnimation];                                //旋转图片
         [self addTimer];                                         //开启新的定时器
 
     }else {
@@ -173,11 +201,17 @@
     }
     sender.selected = !sender.selected;             //按钮状态反选
     if (sender.isSelected) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"toolbar_pause_n_p"] forState:UIControlStateSelected];
         [player pause];   //选中按钮，暂停歌曲
         [self removeTimer];
+        [self pauseLayer:self.coverImageView.layer];
+
     }else{
         [player play];
         [self addTimer];
+        [self addAnimation];
+        [self resumeLayer:self.coverImageView.layer];
+
     }
 }
 
@@ -240,9 +274,10 @@
 - (void)musicPlayDidEnd:(NSNotification *)notification{
 
     if (self.currentindex == self.musicModels.count-1) {
-        return;
+        self.currentindex = 0;
+    }else{
+        self.currentindex += 1;
     }
-    self.currentindex += 1;
     [self playMusic];
 
 }
@@ -322,7 +357,7 @@
 
     //改变进度条的状态
     self.sliderBtnLeadConstraint.constant = scale*(self.view.width-self.sliderBtn.width);
-    self.progressViewWidthContraint.constant = self.sliderBtn.center.x;
+    self.progressViewWidthContraint.constant = scale*(self.view.width);
 
     //显示标签和按钮上的时间
     NSString* currentTimeLb = [self formateTime:currentTime];
@@ -335,9 +370,9 @@
  重置按钮与进度条的位置
  */
 -(void)resetProgress{
-    self.sliderBtn.x = 0;
+    self.sliderBtn.x = -3;
     self.sliderBtn.titleLabel.text = [self formateTime:0];
-    self.progressView.width = self.sliderBtn.center.x;
+    self.progressView.width = 0;
 }
 
 
@@ -349,13 +384,41 @@
 /**
  旋转动画
  */
--(void)rotationImageView{
+-(void)addAnimation{
     CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    anim.fromValue = @(0);
-    anim.toValue = @(M_PI*2);
-    anim.repeatCount = NSIntegerMax;
-    anim.duration = 40;
+        anim.fromValue = @(0);
+        anim.toValue = @(M_PI*2);
+        anim.repeatCount = NSIntegerMax;
+        anim.duration = 40;
+        anim.removedOnCompletion = NO;
     [self.coverImageView.layer addAnimation:anim forKey:nil];
+
+}
+//暂停layer上面的动画
+- (void)pauseLayer:(CALayer*)layer
+{
+     //获取当前暂停时间
+    CFTimeInterval pausedTime = CACurrentMediaTime();
+     //层的速度为0,停止动画
+    layer.speed = 0.0;
+     //保存暂停时间,便于恢复
+    layer.timeOffset = pausedTime;
+}
+//继续layer上面的动画
+- (void)resumeLayer:(CALayer*)layer
+{
+     //获取暂停时保存的时间
+    CFTimeInterval pausedTime = layer.timeOffset;
+    //设置速度
+    layer.speed = 1.0;
+    //清除开始时间
+    layer.beginTime = 0.0;
+    layer.timeOffset = 0.0;
+    //计算开始时间
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+     //重设开始时间
+    layer.beginTime = timeSincePause;
+
 }
 
 /**
@@ -432,7 +495,7 @@ static AVAudioSession* session = nil;
     switch (event.subtype) {
         case UIEventSubtypeRemoteControlPlay:
         case UIEventSubtypeRemoteControlPause:
-            [self playOrPurse:nil];
+            [self playOrPurse:self.playOrPuseBtn];
             break;
 
         case UIEventSubtypeRemoteControlNextTrack:

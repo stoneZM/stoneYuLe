@@ -45,6 +45,11 @@
 		8E2FACB31D137F67003B313B /* XMAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB21D137F67003B313B /* XMAlbumModel.m */; };
 		8E2FACB61D138AC8003B313B /* XMAlbumVIewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB51D138AC8003B313B /* XMAlbumVIewControllerViewController.m */; };
 		8E2FACB91D138AFC003B313B /* XMAlbumViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2FACB81D138AFC003B313B /* XMAlbumViewModel.m */; };
+		8E31648A1D23865400C29075 /* Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164891D23865400C29075 /* Factory.m */; };
+		8E3164931D2389FB00C29075 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E31648E1D2389FB00C29075 /* RECommonFunctions.m */; };
+		8E3164941D2389FB00C29075 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164901D2389FB00C29075 /* RESideMenu.m */; };
+		8E3164951D2389FB00C29075 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164921D2389FB00C29075 /* UIViewController+RESideMenu.m */; };
+		8E3164981D238B6B00C29075 /* SideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164971D238B6B00C29075 /* SideMenuController.m */; };
 		8E33CF3A1D18EBB100B35806 /* UIImage+ZMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */; };
 		8E5872311D123371008F0F00 /* XMCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5872301D123371008F0F00 /* XMCategoryCell.m */; };
 		8E91DAFC1D15880500F85C51 /* XMTracksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E91DAFB1D15880500F85C51 /* XMTracksModel.m */; };
@@ -58,6 +63,10 @@
 		8ED7E8B91D16E9C60060743C /* TopAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8B81D16E9C60060743C /* TopAlbumController.m */; };
 		8ED7E8BC1D16EE370060743C /* TopAlbumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8BB1D16EE370060743C /* TopAlbumListCell.m */; };
 		8ED7E8BE1D16EE4E0060743C /* TopAlbumListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ED7E8BD1D16EE4E0060743C /* TopAlbumListCell.xib */; };
+		8EEB9F3A1D2122D400A367C0 /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB9F391D2122D400A367C0 /* ReadViewController.m */; };
+		8EEB9F401D2125FC00A367C0 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB9F3F1D2125FC00A367C0 /* CustomTabBarController.m */; };
+		8EEB9F471D217B2200A367C0 /* MovieController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB9F461D217B2200A367C0 /* MovieController.m */; };
+		8EEB9F4A1D217C4800A367C0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEB9F491D217C4800A367C0 /* TestViewController.m */; };
 		8EEDF53A1D1A903F008051E2 /* AlbumPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EEDF5391D1A903F008051E2 /* AlbumPlayController.xib */; };
 		8EEDF5FB1D1C0ECC008051E2 /* MusicPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDF5FA1D1C0ECC008051E2 /* MusicPlayController.m */; };
 		8EEDF5FF1D1C11FE008051E2 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEDF5FE1D1C11FE008051E2 /* UIView+Extension.m */; };
@@ -103,8 +112,8 @@
 		8E15AFC21D14EF0400CF976B /* AlbumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumListCell.m; sourceTree = "<group>"; };
 		8E15AFC61D15072F00CF976B /* AlbumDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailView.h; sourceTree = "<group>"; };
 		8E15AFC71D15072F00CF976B /* AlbumDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailView.m; sourceTree = "<group>"; };
-		8E15AFC91D15089600CF976B /* ZmImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZmImageView.h; sourceTree = "<group>"; };
-		8E15AFCA1D15089600CF976B /* ZmImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZmImageView.m; sourceTree = "<group>"; };
+		8E15AFC91D15089600CF976B /* ZmImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZmImageView.h; path = ../ZmImageView.h; sourceTree = "<group>"; };
+		8E15AFCA1D15089600CF976B /* ZmImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZmImageView.m; path = ../ZmImageView.m; sourceTree = "<group>"; };
 		8E15AFD41D151DFE00CF976B /* XMAlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlbumDetailViewController.h; sourceTree = "<group>"; };
 		8E15AFD51D151DFE00CF976B /* XMAlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumDetailViewController.m; sourceTree = "<group>"; };
 		8E2FAC781D1241D4003B313B /* XMCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCategoryTableViewController.h; sourceTree = "<group>"; };
@@ -134,17 +143,27 @@
 		8E2FACA21D13758A003B313B /* WMProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMProgressView.m; sourceTree = "<group>"; };
 		8E2FACA31D13758A003B313B /* WMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMScrollView.h; sourceTree = "<group>"; };
 		8E2FACA41D13758A003B313B /* WMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMScrollView.m; sourceTree = "<group>"; };
-		8E2FACA51D13758A003B313B /* WMPageConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageConst.h; sourceTree = "<group>"; };
-		8E2FACA61D13758A003B313B /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
-		8E2FACA71D13758A003B313B /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
+		8E2FACA51D13758A003B313B /* WMPageConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WMPageConst.h; path = ../WMPageConst.h; sourceTree = "<group>"; };
+		8E2FACA61D13758A003B313B /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WMPageController.h; path = ../WMPageController.h; sourceTree = "<group>"; };
+		8E2FACA71D13758A003B313B /* WMPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WMPageController.m; path = ../WMPageController.m; sourceTree = "<group>"; };
 		8E2FACB11D137F67003B313B /* XMAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlbumModel.h; sourceTree = "<group>"; };
 		8E2FACB21D137F67003B313B /* XMAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumModel.m; sourceTree = "<group>"; };
 		8E2FACB41D138AC8003B313B /* XMAlbumVIewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlbumVIewControllerViewController.h; sourceTree = "<group>"; };
 		8E2FACB51D138AC8003B313B /* XMAlbumVIewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumVIewControllerViewController.m; sourceTree = "<group>"; };
 		8E2FACB71D138AFC003B313B /* XMAlbumViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAlbumViewModel.h; sourceTree = "<group>"; };
 		8E2FACB81D138AFC003B313B /* XMAlbumViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAlbumViewModel.m; sourceTree = "<group>"; };
-		8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZMExtension.h"; sourceTree = "<group>"; };
-		8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZMExtension.m"; sourceTree = "<group>"; };
+		8E3164881D23865400C29075 /* Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Factory.h; sourceTree = "<group>"; };
+		8E3164891D23865400C29075 /* Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Factory.m; sourceTree = "<group>"; };
+		8E31648D1D2389FB00C29075 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		8E31648E1D2389FB00C29075 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		8E31648F1D2389FB00C29075 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		8E3164901D2389FB00C29075 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		8E3164911D2389FB00C29075 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		8E3164921D2389FB00C29075 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		8E3164961D238B6B00C29075 /* SideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuController.h; sourceTree = "<group>"; };
+		8E3164971D238B6B00C29075 /* SideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuController.m; sourceTree = "<group>"; };
+		8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ZMExtension.h"; path = "../UIImage+ZMExtension.h"; sourceTree = "<group>"; };
+		8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ZMExtension.m"; path = "../UIImage+ZMExtension.m"; sourceTree = "<group>"; };
 		8E58722F1D123371008F0F00 /* XMCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCategoryCell.h; sourceTree = "<group>"; };
 		8E5872301D123371008F0F00 /* XMCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMCategoryCell.m; sourceTree = "<group>"; };
 		8E91DAFA1D15880500F85C51 /* XMTracksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTracksModel.h; sourceTree = "<group>"; };
@@ -154,8 +173,8 @@
 		8E99F7151D17BC5B00BE0D7D /* Top50Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Top50Cell.xib; sourceTree = "<group>"; };
 		8ED498441D17EBD400052633 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		8ED498451D17EBD400052633 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		8ED498471D17FCD500052633 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extension.h"; path = "../Resource/UIImage+Extension.h"; sourceTree = "<group>"; };
-		8ED498481D17FCD500052633 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Extension.m"; path = "../Resource/UIImage+Extension.m"; sourceTree = "<group>"; };
+		8ED498471D17FCD500052633 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extension.h"; path = "../../Resource/UIImage+Extension.h"; sourceTree = "<group>"; };
+		8ED498481D17FCD500052633 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Extension.m"; path = "../../Resource/UIImage+Extension.m"; sourceTree = "<group>"; };
 		8ED7E8B11D16D9C30060743C /* XMTopAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTopAlbumModel.h; sourceTree = "<group>"; };
 		8ED7E8B21D16D9C30060743C /* XMTopAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMTopAlbumModel.m; sourceTree = "<group>"; };
 		8ED7E8B41D16E1C50060743C /* XMTopAlbumViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMTopAlbumViewModel.h; sourceTree = "<group>"; };
@@ -165,6 +184,14 @@
 		8ED7E8BA1D16EE370060743C /* TopAlbumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAlbumListCell.h; sourceTree = "<group>"; };
 		8ED7E8BB1D16EE370060743C /* TopAlbumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopAlbumListCell.m; sourceTree = "<group>"; };
 		8ED7E8BD1D16EE4E0060743C /* TopAlbumListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopAlbumListCell.xib; sourceTree = "<group>"; };
+		8EEB9F381D2122D400A367C0 /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadViewController.h; sourceTree = "<group>"; };
+		8EEB9F391D2122D400A367C0 /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadViewController.m; sourceTree = "<group>"; };
+		8EEB9F3E1D2125FC00A367C0 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		8EEB9F3F1D2125FC00A367C0 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		8EEB9F451D217B2200A367C0 /* MovieController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieController.h; sourceTree = "<group>"; };
+		8EEB9F461D217B2200A367C0 /* MovieController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieController.m; sourceTree = "<group>"; };
+		8EEB9F481D217C4800A367C0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		8EEB9F491D217C4800A367C0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		8EEDF5391D1A903F008051E2 /* AlbumPlayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumPlayController.xib; sourceTree = "<group>"; };
 		8EEDF5F91D1C0ECC008051E2 /* MusicPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayController.h; sourceTree = "<group>"; };
 		8EEDF5FA1D1C0ECC008051E2 /* MusicPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayController.m; sourceTree = "<group>"; };
@@ -239,8 +266,11 @@
 				3886C0B21BD74A4A0014E661 /* Resource */,
 				3886C0B31BD74A4A0014E661 /* Util */,
 				3886C0B41BD74A4A0014E661 /* Vendor */,
+				8E31648B1D2389B700C29075 /* sideMenu */,
 				3886C0991BD748830014E661 /* AppDelegate.h */,
 				3886C09A1BD748830014E661 /* AppDelegate.m */,
+				8EEB9F3E1D2125FC00A367C0 /* CustomTabBarController.h */,
+				8EEB9F3F1D2125FC00A367C0 /* CustomTabBarController.m */,
 				3886C0961BD748830014E661 /* Supporting Files */,
 			);
 			path = BaseProject;
@@ -266,6 +296,7 @@
 		3886C0B01BD74A4A0014E661 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E3164C31D23D71600C29075 /* TuWanModel */,
 				8E15AFCC1D1511E500CF976B /* XmLaModel */,
 				3886C0BF1BD74B090014E661 /* BaseModel.h */,
 				3886C0C01BD74B090014E661 /* BaseModel.m */,
@@ -304,18 +335,11 @@
 		3886C0B41BD74A4A0014E661 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8E31648C1D2389FB00C29075 /* RESideMenu */,
+				8E3164871D2385F300C29075 /* Extension */,
 				8EEDF5FC1D1C11FE008051E2 /* frame */,
 				8ED498431D17EBD400052633 /* iCarousel */,
-				8E15AFC91D15089600CF976B /* ZmImageView.h */,
-				8E15AFCA1D15089600CF976B /* ZmImageView.m */,
-				8ED498471D17FCD500052633 /* UIImage+Extension.h */,
-				8ED498481D17FCD500052633 /* UIImage+Extension.m */,
-				8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */,
-				8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */,
 				8E2FAC9A1D13758A003B313B /* WMMenuView */,
-				8E2FACA51D13758A003B313B /* WMPageConst.h */,
-				8E2FACA61D13758A003B313B /* WMPageController.h */,
-				8E2FACA71D13758A003B313B /* WMPageController.m */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -331,7 +355,10 @@
 		3886C0B61BD74A4A0014E661 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8E15AFCF1D15128F00CF976B /* XmLaViewController */,
+				8EEB9F371D21223900A367C0 /* read */,
+				8E15AFCF1D15128F00CF976B /* listen */,
+				8EEB9F301D211C4F00A367C0 /* Movie */,
+				8E3164C21D23B0B700C29075 /* others */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -391,7 +418,7 @@
 			name = XmLaViewModel;
 			sourceTree = "<group>";
 		};
-		8E15AFCF1D15128F00CF976B /* XmLaViewController */ = {
+		8E15AFCF1D15128F00CF976B /* listen */ = {
 			isa = PBXGroup;
 			children = (
 				8E2FAC781D1241D4003B313B /* XMCategoryTableViewController.h */,
@@ -408,7 +435,7 @@
 				8EEDF5FA1D1C0ECC008051E2 /* MusicPlayController.m */,
 				8EEDF5391D1A903F008051E2 /* AlbumPlayController.xib */,
 			);
-			name = XmLaViewController;
+			name = listen;
 			sourceTree = "<group>";
 		};
 		8E15AFD01D1512A700CF976B /* XmLaView */ = {
@@ -445,8 +472,65 @@
 				8E2FACA21D13758A003B313B /* WMProgressView.m */,
 				8E2FACA31D13758A003B313B /* WMScrollView.h */,
 				8E2FACA41D13758A003B313B /* WMScrollView.m */,
+				8E2FACA51D13758A003B313B /* WMPageConst.h */,
+				8E2FACA61D13758A003B313B /* WMPageController.h */,
+				8E2FACA71D13758A003B313B /* WMPageController.m */,
 			);
 			path = WMMenuView;
+			sourceTree = "<group>";
+		};
+		8E3164871D2385F300C29075 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8E15AFC91D15089600CF976B /* ZmImageView.h */,
+				8E15AFCA1D15089600CF976B /* ZmImageView.m */,
+				8ED498471D17FCD500052633 /* UIImage+Extension.h */,
+				8ED498481D17FCD500052633 /* UIImage+Extension.m */,
+				8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */,
+				8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */,
+				8E3164881D23865400C29075 /* Factory.h */,
+				8E3164891D23865400C29075 /* Factory.m */,
+			);
+			name = Extension;
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		8E31648B1D2389B700C29075 /* sideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8E3164961D238B6B00C29075 /* SideMenuController.h */,
+				8E3164971D238B6B00C29075 /* SideMenuController.m */,
+			);
+			name = sideMenu;
+			path = Vendor/iCarousel;
+			sourceTree = "<group>";
+		};
+		8E31648C1D2389FB00C29075 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8E31648D1D2389FB00C29075 /* RECommonFunctions.h */,
+				8E31648E1D2389FB00C29075 /* RECommonFunctions.m */,
+				8E31648F1D2389FB00C29075 /* RESideMenu.h */,
+				8E3164901D2389FB00C29075 /* RESideMenu.m */,
+				8E3164911D2389FB00C29075 /* UIViewController+RESideMenu.h */,
+				8E3164921D2389FB00C29075 /* UIViewController+RESideMenu.m */,
+			);
+			name = RESideMenu;
+			path = ../RESideMenu;
+			sourceTree = "<group>";
+		};
+		8E3164C21D23B0B700C29075 /* others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = others;
+			sourceTree = "<group>";
+		};
+		8E3164C31D23D71600C29075 /* TuWanModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TuWanModel;
 			sourceTree = "<group>";
 		};
 		8ED498431D17EBD400052633 /* iCarousel */ = {
@@ -456,6 +540,26 @@
 				8ED498451D17EBD400052633 /* iCarousel.m */,
 			);
 			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		8EEB9F301D211C4F00A367C0 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB9F451D217B2200A367C0 /* MovieController.h */,
+				8EEB9F461D217B2200A367C0 /* MovieController.m */,
+				8EEB9F481D217C4800A367C0 /* TestViewController.h */,
+				8EEB9F491D217C4800A367C0 /* TestViewController.m */,
+			);
+			name = Movie;
+			sourceTree = "<group>";
+		};
+		8EEB9F371D21223900A367C0 /* read */ = {
+			isa = PBXGroup;
+			children = (
+				8EEB9F381D2122D400A367C0 /* ReadViewController.h */,
+				8EEB9F391D2122D400A367C0 /* ReadViewController.m */,
+			);
+			name = read;
 			sourceTree = "<group>";
 		};
 		8EEDF5FC1D1C11FE008051E2 /* frame */ = {
@@ -617,20 +721,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EEDF5FF1D1C11FE008051E2 /* UIView+Extension.m in Sources */,
+				8EEB9F4A1D217C4800A367C0 /* TestViewController.m in Sources */,
 				8E2FACB61D138AC8003B313B /* XMAlbumVIewControllerViewController.m in Sources */,
 				3886C0BE1BD74AFE0014E661 /* BaseNetManager.m in Sources */,
 				8E2FAC911D12E3F8003B313B /* XMListViewController.m in Sources */,
+				8E3164981D238B6B00C29075 /* SideMenuController.m in Sources */,
 				8ED7E8B61D16E1C50060743C /* XMTopAlbumViewModel.m in Sources */,
 				8E2FAC8E1D12D192003B313B /* XMListModel.m in Sources */,
 				8E2FACA81D13758A003B313B /* WMFloodView.m in Sources */,
 				8E15AFBB1D14DA7800CF976B /* XMAlbumDetailModel.m in Sources */,
 				8EEDF5FB1D1C0ECC008051E2 /* MusicPlayController.m in Sources */,
 				8ED7E8BC1D16EE370060743C /* TopAlbumListCell.m in Sources */,
+				8EEB9F471D217B2200A367C0 /* MovieController.m in Sources */,
 				8E2FACAA1D13758A003B313B /* WMMenuView.m in Sources */,
 				8E2FAC891D1286CC003B313B /* XMCatagoryViewModel.m in Sources */,
 				8E15AFBE1D14E5BD00CF976B /* AMAlbumDatailViewModel.m in Sources */,
 				8E15AFC31D14EF0400CF976B /* AlbumListCell.m in Sources */,
+				8EEB9F401D2125FC00A367C0 /* CustomTabBarController.m in Sources */,
 				3804CE541BD758F10046C8C8 /* NSString+QRCode.m in Sources */,
+				8E3164941D2389FB00C29075 /* RESideMenu.m in Sources */,
 				8E2FACAB1D13758A003B313B /* WMProgressView.m in Sources */,
 				3804CE531BD758F10046C8C8 /* NSString+PJR.m in Sources */,
 				8E15AFCB1D15089600CF976B /* ZmImageView.m in Sources */,
@@ -640,11 +749,14 @@
 				8E2FAC991D136C5A003B313B /* XMListViewModel.m in Sources */,
 				8ED498461D17EBD400052633 /* iCarousel.m in Sources */,
 				8E33CF3A1D18EBB100B35806 /* UIImage+ZMExtension.m in Sources */,
+				8EEB9F3A1D2122D400A367C0 /* ReadViewController.m in Sources */,
+				8E31648A1D23865400C29075 /* Factory.m in Sources */,
 				8E2FACAC1D13758A003B313B /* WMScrollView.m in Sources */,
 				8E15AFC81D15072F00CF976B /* AlbumDetailView.m in Sources */,
 				8ED498491D17FCD500052633 /* UIImage+Extension.m in Sources */,
 				8E5872311D123371008F0F00 /* XMCategoryCell.m in Sources */,
 				8ED7E8B31D16D9C30060743C /* XMTopAlbumModel.m in Sources */,
+				8E3164931D2389FB00C29075 /* RECommonFunctions.m in Sources */,
 				3804CE511BD758F10046C8C8 /* AppDelegate+Category.m in Sources */,
 				8E2FACB31D137F67003B313B /* XMAlbumModel.m in Sources */,
 				8E2FACA91D13758A003B313B /* WMMenuItem.m in Sources */,
@@ -659,6 +771,7 @@
 				8E2FAC831D127A4A003B313B /* XMCatageoryModel.m in Sources */,
 				8E2FAC861D127B66003B313B /* XMCatageoryNetworking.m in Sources */,
 				3804CE521BD758F10046C8C8 /* NSObject+Common.m in Sources */,
+				8E3164951D2389FB00C29075 /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

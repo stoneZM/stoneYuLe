@@ -10,7 +10,7 @@
 
 @interface AlbumDetailView : UIView
 
-#warning  还没有用
+
 @property (nonatomic,strong)ZmImageView* coverIV;
 @property (nonatomic,strong)UILabel* titleLb;
 @property (nonatomic,strong)UILabel* nickLb;

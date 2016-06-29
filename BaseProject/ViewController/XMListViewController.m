@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     self.edgesForExtendedLayout = UIRectEdgeNone;
      self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationItem.rightBarButtonItem = self.item;
@@ -189,15 +190,16 @@
     [headerButton bk_addEventHandler:^(id sender) {
         DDLogVerbose(@"##########点击了更多按钮#########");
         if (section == 1) {
-            #warning 点击第二分区的更多按钮，还需传值  推出Album控制器
+
         }else if (section == 2){
-            #warning 点击第三分区的更多按钮，还需传值  推出Album控制器
+
         }else{
         XMAlbumVIewControllerViewController* vc = [[XMAlbumVIewControllerViewController alloc]initWithIDDic:[self.XMvm keywordIdForMoreInSection:section]];
+            
         [self.navigationController pushViewController:vc animated:YES];
         }
     } forControlEvents:UIControlEventTouchUpInside];
-    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"liveRadioCellPoint"]];
+    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"toolbar_playinglist_h_p"]];
     [headerButton addSubview:self.moreLb];
     [headerButton addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -211,14 +213,13 @@
     }];
     UIImageView* moreIV = [UIImageView new];
     moreIV.contentMode = UIViewContentModeScaleAspectFit;
-    UIImage* image = [UIImage imageNamed:@"liveRadioSectionMore_Normal"];
-//    UIImage* imageHl = [UIImage imageNamed:@"liveRadioSectionMore_High"];
+    UIImage* image = [UIImage imageNamed:@"toolbar_play_n_p"];
     moreIV.image = image;
     [headerButton addSubview:moreIV];
     [moreIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-10);
         make.centerY.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(30, 20));
+        make.size.mas_equalTo(CGSizeMake(30,20));
     }];
     return headerButton;
 }

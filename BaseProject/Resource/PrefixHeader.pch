@@ -57,5 +57,8 @@ static const int ddLogLevel = DDLogLevelError;
 #import "NSObject+Common.h"
 
 #import "ZmImageView.h"
+#import "UIViewController+RESideMenu.h"
+#import "RESideMenu.h"
+#import "Factory.h"
 
 #endif /* PrefixHeader_pch */
