@@ -10,4 +10,6 @@
 
 @interface CustomTabBarController : UITabBarController
 
++(CustomTabBarController*)standTabBar;
+
 @end

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlboutYuLeController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_icon" translatesAutoresizingMaskIntoConstraints="NO" id="fsw-Rh-dmZ">
+                    <rect key="frame" x="130" y="40" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="6Uv-IE-zXt"/>
+                        <constraint firstAttribute="height" constant="60" id="baC-yI-vMT"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎使用此产品" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9C-P6-WD9">
+                    <rect key="frame" x="10" y="228" width="300" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fsw-Rh-dmZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Z7-m5-N1A"/>
+                <constraint firstAttribute="trailing" secondItem="q9C-P6-WD9" secondAttribute="trailing" constant="10" id="MSB-bs-Bpq"/>
+                <constraint firstItem="fsw-Rh-dmZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="VEc-fB-5MV"/>
+                <constraint firstItem="q9C-P6-WD9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="228" id="rRf-eU-II9"/>
+                <constraint firstItem="q9C-P6-WD9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="t7C-NY-Qy2"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="515" y="131"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="about_icon" width="71" height="71"/>
+    </resources>
+</document>

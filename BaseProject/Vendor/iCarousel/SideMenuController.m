@@ -7,7 +7,9 @@
 //
 
 #import "SideMenuController.h"
-
+#import "AlboutYuLeController.h"
+#import "CustomTabBarController.h"
+#import "AlboutSetController.h"
 @interface SideMenuController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView* tableView;
 @end
@@ -73,15 +75,35 @@
     return 60;
 }
 -(NSArray*)titles{
-    NSArray* titles = @[@"主页",@"设置",@"清空缓存",@"关于娱乐",@"退出"];
+    NSArray* titles = @[@"主页",@"设置",@"我的下载",@"关于娱乐",@"退出"];
     return titles;
 }
 -(NSArray*)images{
-    NSArray* images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconEmpty"];
+    NSArray* images = @[@"IconHome",@"IconSettings", @"IconProfile", @"IconCalendar", @"IconEmpty"];
     return images;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+            [self.sideMenuViewController setContentViewController:[CustomTabBarController standTabBar]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 1:
+            [self.sideMenuViewController setContentViewController:[AlboutSetController standNavi]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+            case 2:
+
+            break;
+
+            case 3:
+            [self.sideMenuViewController setContentViewController:[AlboutYuLeController standardYuLeNavi]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        default:
+            break;
+    }
 }
 
 //设置点击后cell显示的颜色

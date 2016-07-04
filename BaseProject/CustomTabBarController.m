@@ -14,10 +14,20 @@
 #import "TestViewController.h"
 @interface CustomTabBarController ()
 
-
 @end
 
+
 @implementation CustomTabBarController
+
++(CustomTabBarController*)standTabBar{
+
+  static  CustomTabBarController* tabBar = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        tabBar = [CustomTabBarController new];
+    });
+    return tabBar;
+}
 
 -(NSArray*)vcArr{
     XMCategoryTableViewController* XMvc = [XMCategoryTableViewController new];

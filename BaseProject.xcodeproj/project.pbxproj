@@ -50,6 +50,9 @@
 		8E3164941D2389FB00C29075 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164901D2389FB00C29075 /* RESideMenu.m */; };
 		8E3164951D2389FB00C29075 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164921D2389FB00C29075 /* UIViewController+RESideMenu.m */; };
 		8E3164981D238B6B00C29075 /* SideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164971D238B6B00C29075 /* SideMenuController.m */; };
+		8E3164C71D23D9EB00C29075 /* AlboutYuLeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164C51D23D9EB00C29075 /* AlboutYuLeController.m */; };
+		8E3164C81D23D9EB00C29075 /* AlboutYuLeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E3164C61D23D9EB00C29075 /* AlboutYuLeController.xib */; };
+		8E3164CD1D240B7800C29075 /* AlboutSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3164CC1D240B7800C29075 /* AlboutSetController.m */; };
 		8E33CF3A1D18EBB100B35806 /* UIImage+ZMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */; };
 		8E5872311D123371008F0F00 /* XMCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5872301D123371008F0F00 /* XMCategoryCell.m */; };
 		8E91DAFC1D15880500F85C51 /* XMTracksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E91DAFB1D15880500F85C51 /* XMTracksModel.m */; };
@@ -162,6 +165,11 @@
 		8E3164921D2389FB00C29075 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		8E3164961D238B6B00C29075 /* SideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuController.h; sourceTree = "<group>"; };
 		8E3164971D238B6B00C29075 /* SideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuController.m; sourceTree = "<group>"; };
+		8E3164C41D23D9EB00C29075 /* AlboutYuLeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlboutYuLeController.h; sourceTree = "<group>"; };
+		8E3164C51D23D9EB00C29075 /* AlboutYuLeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlboutYuLeController.m; sourceTree = "<group>"; };
+		8E3164C61D23D9EB00C29075 /* AlboutYuLeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlboutYuLeController.xib; sourceTree = "<group>"; };
+		8E3164CB1D240B7800C29075 /* AlboutSetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlboutSetController.h; sourceTree = "<group>"; };
+		8E3164CC1D240B7800C29075 /* AlboutSetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlboutSetController.m; sourceTree = "<group>"; };
 		8E33CF381D18EBB100B35806 /* UIImage+ZMExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ZMExtension.h"; path = "../UIImage+ZMExtension.h"; sourceTree = "<group>"; };
 		8E33CF391D18EBB100B35806 /* UIImage+ZMExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ZMExtension.m"; path = "../UIImage+ZMExtension.m"; sourceTree = "<group>"; };
 		8E58722F1D123371008F0F00 /* XMCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCategoryCell.h; sourceTree = "<group>"; };
@@ -296,7 +304,6 @@
 		3886C0B01BD74A4A0014E661 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E3164C31D23D71600C29075 /* TuWanModel */,
 				8E15AFCC1D1511E500CF976B /* XmLaModel */,
 				3886C0BF1BD74B090014E661 /* BaseModel.h */,
 				3886C0C01BD74B090014E661 /* BaseModel.m */,
@@ -522,15 +529,13 @@
 		8E3164C21D23B0B700C29075 /* others */ = {
 			isa = PBXGroup;
 			children = (
+				8E3164C41D23D9EB00C29075 /* AlboutYuLeController.h */,
+				8E3164C51D23D9EB00C29075 /* AlboutYuLeController.m */,
+				8E3164C61D23D9EB00C29075 /* AlboutYuLeController.xib */,
+				8E3164CB1D240B7800C29075 /* AlboutSetController.h */,
+				8E3164CC1D240B7800C29075 /* AlboutSetController.m */,
 			);
 			name = others;
-			sourceTree = "<group>";
-		};
-		8E3164C31D23D71600C29075 /* TuWanModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TuWanModel;
 			sourceTree = "<group>";
 		};
 		8ED498431D17EBD400052633 /* iCarousel */ = {
@@ -658,6 +663,7 @@
 				8E15AFC01D14EED200CF976B /* AlbumListCell.xib in Resources */,
 				8E2FAC961D12E448003B313B /* XMList.xib in Resources */,
 				8E99F7161D17BC5B00BE0D7D /* Top50Cell.xib in Resources */,
+				8E3164C81D23D9EB00C29075 /* AlboutYuLeController.xib in Resources */,
 				3886C0A31BD748830014E661 /* Assets.xcassets in Resources */,
 				8EEDF53A1D1A903F008051E2 /* AlbumPlayController.xib in Resources */,
 				3886C0A11BD748830014E661 /* Main.storyboard in Resources */,
@@ -726,12 +732,14 @@
 				3886C0BE1BD74AFE0014E661 /* BaseNetManager.m in Sources */,
 				8E2FAC911D12E3F8003B313B /* XMListViewController.m in Sources */,
 				8E3164981D238B6B00C29075 /* SideMenuController.m in Sources */,
+				8E3164C71D23D9EB00C29075 /* AlboutYuLeController.m in Sources */,
 				8ED7E8B61D16E1C50060743C /* XMTopAlbumViewModel.m in Sources */,
 				8E2FAC8E1D12D192003B313B /* XMListModel.m in Sources */,
 				8E2FACA81D13758A003B313B /* WMFloodView.m in Sources */,
 				8E15AFBB1D14DA7800CF976B /* XMAlbumDetailModel.m in Sources */,
 				8EEDF5FB1D1C0ECC008051E2 /* MusicPlayController.m in Sources */,
 				8ED7E8BC1D16EE370060743C /* TopAlbumListCell.m in Sources */,
+				8E3164CD1D240B7800C29075 /* AlboutSetController.m in Sources */,
 				8EEB9F471D217B2200A367C0 /* MovieController.m in Sources */,
 				8E2FACAA1D13758A003B313B /* WMMenuView.m in Sources */,
 				8E2FAC891D1286CC003B313B /* XMCatagoryViewModel.m in Sources */,

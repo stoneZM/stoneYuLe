@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-//    self.title = @"测试";
+    [Factory addMenuItemToVC:self];
     self.menuView.progressWidths = @[@110, @50, @110];
 }
 
@@ -60,6 +60,8 @@
 - (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info {
     NSLog(@"%@", info);
 }
+
+
 //设置tabBar的图片
 -(void)settabBarImage{
     UIImage* norImage = [UIImage imageNamed:@"tabbar_sound_n"];
