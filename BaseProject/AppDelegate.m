@@ -12,6 +12,7 @@
 #import "XMCatageoryNetworking.h"
 #import "CustomTabBarController.h"
 #import "SideMenuController.h"
+#import "TuWanNetworking.h"
 @interface AppDelegate ()
 
 @end
@@ -22,11 +23,15 @@
 
     [self initializeWithApplication:application];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//    CustomTabBarController* tabBar = [CustomTabBarController new];
     self.window.rootViewController = [self sideMenu];
     [self.window makeKeyAndVisible];
     [self configGlobalUIStyle];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
+//    [TuWanNetworking getTuWanModelWithType:2 Start:0 completationHandle:^(id responseObj, NSError *error) {
+//
+//
+//    }];
     return YES;
 }
 

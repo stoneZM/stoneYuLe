@@ -10,4 +10,9 @@
 
 @interface ReadViewController : UIViewController
 
+@property (nonatomic,assign)NSInteger infoType;
+
+-(instancetype)initWithinfotype:(NSInteger)infoType;
+
+
 @end

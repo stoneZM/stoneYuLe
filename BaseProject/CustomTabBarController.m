@@ -12,6 +12,8 @@
 #import "ReadViewController.h"
 #import "UIView+Extension.h"
 #import "TestViewController.h"
+#import "PagesViewController.h"
+
 @interface CustomTabBarController ()
 
 @end
@@ -40,9 +42,10 @@
     TestViewController* vc = [[TestViewController alloc]init];
     [vc settabBarImage];
     UINavigationController* RDnavi = [[UINavigationController alloc]initWithRootViewController:vc];
-    ReadViewController* vc2 = [ReadViewController new];
-   
-    NSArray* arr = [NSArray arrayWithObjects:XMnavi,RDnavi,vc2,nil];
+    //ReadViewController* vc2 = [ReadViewController new];
+
+    UINavigationController* navi = [PagesViewController standNavi];
+    NSArray* arr = [NSArray arrayWithObjects:XMnavi,RDnavi,navi,nil];
     return arr;
 }
 
