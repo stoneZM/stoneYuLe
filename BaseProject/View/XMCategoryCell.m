@@ -72,6 +72,7 @@
 
     return _leftButton;
 }
+
 -(UIButton *)rightButton{
     if (_rightButton == nil) {
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -91,6 +92,8 @@
 
     return _rightButton;
 }
+
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier: reuseIdentifier];
     if (self) {
@@ -113,12 +116,12 @@
             make.top.bottom.right.mas_equalTo(0);
             make.left.mas_equalTo(segmentedView.mas_right).mas_equalTo(0);
         }];
-
-
     }
 
     return self;
 }
+
+
 - (UIImage *)imageWithColor:(UIColor *)color {
 
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);

@@ -14,53 +14,10 @@
 @end
 
 @implementation TestViewController
-- (instancetype)init {
-    if (self = [super init]) {
-        self.menuHeight = 40.0;
-        self.menuViewStyle =WMMenuViewStyleLine;
-        self.itemsWidths = @[@120,@60,@120];
-    }
-    return self;
-}
-- (void)viewDidLoad {
+-(void)viewDidLoad{
+
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
-    [Factory addMenuItemToVC:self];
-    self.menuView.progressWidths = @[@110, @50, @110];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-}
--(NSArray*)vcs{
-    NSMutableArray* arr = [NSMutableArray new];
-    for (int i = 0; i < 3; i++) {
-        [arr addObject:[MovieController class]];
-    }
-    return [arr copy];
-}
--(NSArray*)titles{
-    NSArray* arr = @[@"第一个控制器",@"第二个",@"第三个控制器啊"];
-    return arr;
-}
-
-
--(NSInteger)numbersOfChildControllersInPageController:(WMPageController *)pageController{
-    return [self titles].count;
-}
--(UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index{
-    return [MovieController new];
-}
--(NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index{
-    return [self titles][index];
-}
-
-- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info {
-    NSLog(@"%@", info);
-}
-
 
 //设置tabBar的图片
 -(void)settabBarImage{

@@ -59,6 +59,12 @@
 		8E91DB011D15A29300F85C51 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E91DB001D15A29300F85C51 /* AVFoundation.framework */; };
 		8E91DB031D15A29F00F85C51 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E91DB021D15A29F00F85C51 /* AVKit.framework */; };
 		8E99F7161D17BC5B00BE0D7D /* Top50Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E99F7151D17BC5B00BE0D7D /* Top50Cell.xib */; };
+		8EAF3B9C1D7BC90C009B54BF /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAF3B9A1D7BC90C009B54BF /* VideoModel.m */; };
+		8EAF3BA31D7BC93D009B54BF /* VideoNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAF3BA11D7BC93D009B54BF /* VideoNetManager.m */; };
+		8EAF3BA61D7BCAB8009B54BF /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAF3BA51D7BCAB8009B54BF /* VideoCell.m */; };
+		8EAF3BAC1D7BCAF5009B54BF /* VideoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAF3BAB1D7BCAF5009B54BF /* VideoViewModel.m */; };
+		8EAF3BB01D7BCB31009B54BF /* VideoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAF3BAE1D7BCB31009B54BF /* VideoTableViewController.m */; };
+		8EAF3BB31D7BCD24009B54BF /* cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAF3BB21D7BCD24009B54BF /* cell.xib */; };
 		8ED498461D17EBD400052633 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED498451D17EBD400052633 /* iCarousel.m */; };
 		8ED498491D17FCD500052633 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED498481D17FCD500052633 /* UIImage+Extension.m */; };
 		8ED7E8B31D16D9C30060743C /* XMTopAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED7E8B21D16D9C30060743C /* XMTopAlbumModel.m */; };
@@ -188,6 +194,17 @@
 		8E91DB001D15A29300F85C51 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8E91DB021D15A29F00F85C51 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		8E99F7151D17BC5B00BE0D7D /* Top50Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Top50Cell.xib; sourceTree = "<group>"; };
+		8EAF3B991D7BC90C009B54BF /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
+		8EAF3B9A1D7BC90C009B54BF /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
+		8EAF3BA01D7BC93D009B54BF /* VideoNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoNetManager.h; sourceTree = "<group>"; };
+		8EAF3BA11D7BC93D009B54BF /* VideoNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoNetManager.m; sourceTree = "<group>"; };
+		8EAF3BA41D7BCAB8009B54BF /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		8EAF3BA51D7BCAB8009B54BF /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		8EAF3BAA1D7BCAF5009B54BF /* VideoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewModel.h; sourceTree = "<group>"; };
+		8EAF3BAB1D7BCAF5009B54BF /* VideoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewModel.m; sourceTree = "<group>"; };
+		8EAF3BAD1D7BCB31009B54BF /* VideoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewController.h; sourceTree = "<group>"; };
+		8EAF3BAE1D7BCB31009B54BF /* VideoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewController.m; sourceTree = "<group>"; };
+		8EAF3BB21D7BCD24009B54BF /* cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = cell.xib; sourceTree = "<group>"; };
 		8ED498441D17EBD400052633 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		8ED498451D17EBD400052633 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		8ED498471D17FCD500052633 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Extension.h"; path = "../../Resource/UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -333,6 +350,7 @@
 				8EE4A4891D2B7479004CB852 /* TuWanModel */,
 				3886C0BF1BD74B090014E661 /* BaseModel.h */,
 				3886C0C01BD74B090014E661 /* BaseModel.m */,
+				8EAF3B961D7BC90C009B54BF /* Model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +358,7 @@
 		3886C0B11BD74A4A0014E661 /* NetManager */ = {
 			isa = PBXGroup;
 			children = (
+				8EAF3B9D1D7BC93D009B54BF /* NetManager */,
 				8E15AFCD1D15121F00CF976B /* XmLaNetManager */,
 				8EE4A48D1D2B8328004CB852 /* TuWanNetManager */,
 				3886C0BC1BD74AFE0014E661 /* BaseNetManager.h */,
@@ -381,6 +400,9 @@
 		3886C0B51BD74A4A0014E661 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8EAF3BA41D7BCAB8009B54BF /* VideoCell.h */,
+				8EAF3BA51D7BCAB8009B54BF /* VideoCell.m */,
+				8EAF3BB21D7BCD24009B54BF /* cell.xib */,
 				8E15AFD01D1512A700CF976B /* XmLaView */,
 				8EE4A4981D2BEB17004CB852 /* TuWanListView */,
 			);
@@ -401,6 +423,8 @@
 		3886C0B71BD74A4A0014E661 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8EAF3BAA1D7BCAF5009B54BF /* VideoViewModel.h */,
+				8EAF3BAB1D7BCAF5009B54BF /* VideoViewModel.m */,
 				8E15AFCE1D15124000CF976B /* XmLaViewModel */,
 				8EE4A4911D2BE461004CB852 /* TuWanViewModel */,
 				3886C0B91BD74AE90014E661 /* BaseViewModel.h */,
@@ -567,6 +591,24 @@
 			name = others;
 			sourceTree = "<group>";
 		};
+		8EAF3B961D7BC90C009B54BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8EAF3B991D7BC90C009B54BF /* VideoModel.h */,
+				8EAF3B9A1D7BC90C009B54BF /* VideoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8EAF3B9D1D7BC93D009B54BF /* NetManager */ = {
+			isa = PBXGroup;
+			children = (
+				8EAF3BA01D7BC93D009B54BF /* VideoNetManager.h */,
+				8EAF3BA11D7BC93D009B54BF /* VideoNetManager.m */,
+			);
+			path = NetManager;
+			sourceTree = "<group>";
+		};
 		8ED498431D17EBD400052633 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +661,8 @@
 		8EEB9F301D211C4F00A367C0 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				8EAF3BAD1D7BCB31009B54BF /* VideoTableViewController.h */,
+				8EAF3BAE1D7BCB31009B54BF /* VideoTableViewController.m */,
 				8EEB9F451D217B2200A367C0 /* MovieController.h */,
 				8EEB9F461D217B2200A367C0 /* MovieController.m */,
 				8EEB9F481D217C4800A367C0 /* TestViewController.h */,
@@ -734,6 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E15AFC01D14EED200CF976B /* AlbumListCell.xib in Resources */,
+				8EAF3BB31D7BCD24009B54BF /* cell.xib in Resources */,
 				8E2FAC961D12E448003B313B /* XMList.xib in Resources */,
 				8E99F7161D17BC5B00BE0D7D /* Top50Cell.xib in Resources */,
 				8E3164C81D23D9EB00C29075 /* AlboutYuLeController.xib in Resources */,
@@ -805,7 +850,11 @@
 				8EEB9F4A1D217C4800A367C0 /* TestViewController.m in Sources */,
 				8E2FACB61D138AC8003B313B /* XMAlbumVIewControllerViewController.m in Sources */,
 				8EE4A49E1D2BEBE7004CB852 /* TuWanListCell.m in Sources */,
+				8EAF3BAC1D7BCAF5009B54BF /* VideoViewModel.m in Sources */,
+				8EAF3BB01D7BCB31009B54BF /* VideoTableViewController.m in Sources */,
 				3886C0BE1BD74AFE0014E661 /* BaseNetManager.m in Sources */,
+				8EAF3BA31D7BC93D009B54BF /* VideoNetManager.m in Sources */,
+				8EAF3B9C1D7BC90C009B54BF /* VideoModel.m in Sources */,
 				8E2FAC911D12E3F8003B313B /* XMListViewController.m in Sources */,
 				8E3164981D238B6B00C29075 /* SideMenuController.m in Sources */,
 				8E3164C71D23D9EB00C29075 /* AlboutYuLeController.m in Sources */,
@@ -828,6 +877,7 @@
 				3804CE541BD758F10046C8C8 /* NSString+QRCode.m in Sources */,
 				8E3164941D2389FB00C29075 /* RESideMenu.m in Sources */,
 				8E2FACAB1D13758A003B313B /* WMProgressView.m in Sources */,
+				8EAF3BA61D7BCAB8009B54BF /* VideoCell.m in Sources */,
 				8EE4A4971D2BE4B2004CB852 /* TuWanViewModel.m in Sources */,
 				3804CE531BD758F10046C8C8 /* NSString+PJR.m in Sources */,
 				8E15AFCB1D15089600CF976B /* ZmImageView.m in Sources */,
@@ -971,7 +1021,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = BaseProject/Resource/PrefixHeader.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zm.yule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -989,7 +1039,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = BaseProject/Resource/PrefixHeader.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zm.yule;
 				PRODUCT_NAME = "$(TARGET_NAME)";

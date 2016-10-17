@@ -13,7 +13,7 @@
 #import "UIView+Extension.h"
 #import "TestViewController.h"
 #import "PagesViewController.h"
-
+#import "VideoTableViewController.h"
 @interface CustomTabBarController ()
 
 @end
@@ -37,15 +37,17 @@
     [XMvc.tabBarController setHidesBottomBarWhenPushed:YES];
     [XMvc settabBarImage];
     
-    MovieController* MVvc = [[MovieController alloc]init];
-    [MVvc settabBarImage];
-    TestViewController* vc = [[TestViewController alloc]init];
-    [vc settabBarImage];
-    UINavigationController* RDnavi = [[UINavigationController alloc]initWithRootViewController:vc];
+//    MovieController* MVvc = [[MovieController alloc]init];
+//    [MVvc settabBarImage];
+//    TestViewController* vc = [[TestViewController alloc]init];
+//    [vc settabBarImage];
+//    UINavigationController* RDnavi = [[UINavigationController alloc]initWithRootViewController:vc];
     //ReadViewController* vc2 = [ReadViewController new];
-
+    VideoTableViewController* vc = [[VideoTableViewController alloc]init];
+    UINavigationController* movnavi = [[UINavigationController alloc]initWithRootViewController:vc];
+    [vc settabBarImage];
     UINavigationController* navi = [PagesViewController standNavi];
-    NSArray* arr = [NSArray arrayWithObjects:XMnavi,RDnavi,navi,nil];
+    NSArray* arr = [NSArray arrayWithObjects:XMnavi,movnavi,navi,nil];
     return arr;
 }
 

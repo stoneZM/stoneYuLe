@@ -13,6 +13,7 @@
 #import "CustomTabBarController.h"
 #import "SideMenuController.h"
 #import "TuWanNetworking.h"
+#import "VideoNetManager.h"
 @interface AppDelegate ()
 
 @end
@@ -27,12 +28,36 @@
     [self.window makeKeyAndVisible];
     [self configGlobalUIStyle];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
-//    [TuWanNetworking getTuWanModelWithType:2 Start:0 completationHandle:^(id responseObj, NSError *error) {
+//    [self set];
+//    [VideoNetManager getVideoWithIndex:1 completionHandle:^(VideoModel *model, NSError *error) {
 //
 //
 //    }];
+
+
+
     return YES;
+}
+
+-(void)set{
+
+    //    电池条显示网络活动
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    //    检测网络状态
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        DDLogVerbose(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                self.onLine = YES;
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+            default:
+                self.onLine = NO;
+                break;
+        }
+    }];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 -(void)configGlobalUIStyle{

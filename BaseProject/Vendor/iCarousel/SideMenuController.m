@@ -59,7 +59,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 4;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -75,11 +75,11 @@
     return 60;
 }
 -(NSArray*)titles{
-    NSArray* titles = @[@"主页",@"设置",@"我的下载",@"关于娱乐",@"退出"];
+    NSArray* titles = @[@"主页",@"设置",@"关于娱乐",@"退出"];
     return titles;
 }
 -(NSArray*)images{
-    NSArray* images = @[@"IconHome",@"IconSettings", @"IconProfile", @"IconCalendar", @"IconEmpty"];
+    NSArray* images = @[@"IconHome",@"IconSettings", @"IconCalendar", @"IconEmpty"];
     return images;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
